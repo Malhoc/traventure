@@ -20,7 +20,7 @@
 @import url('jquery.bootstrap-touchspin.css');
 @import url('odometer-theme-default.css');
 
-/*** 
+/***
 
 ====================================================================
 
@@ -37,7 +37,7 @@
   outline: none;
 }
 
-/*** 
+/***
 
 ====================================================================
 
@@ -379,7 +379,7 @@ img {
   height: auto;
 }
 
-/*** 
+/***
 
 ====================================================================
 
@@ -424,7 +424,7 @@ img {
   background: #1DC5CE;
 }
 
-/*** 
+/***
 
 ====================================================================
   Default Form Style
@@ -538,7 +538,7 @@ form .form-group select option{
   line-height: 30px;
   padding-left:20px;
   text-indent: 20px;
-  cursor:pointer; 
+  cursor:pointer;
 }
 
 form .form-group input[type="submit"],
@@ -858,7 +858,7 @@ form label.error{
   border-color: #1DC5CE;
 }
 
-/*** 
+/***
 
 ====================================================================
 
@@ -1130,7 +1130,7 @@ form label.error{
 }
 
 .fixed-header .main-box .logo-box{
-  
+
 }
 
 .main-header .main-box .logo-box .logo{
@@ -1443,7 +1443,7 @@ form label.error{
 
 .main-menu .navigation > li.dropdown:hover > ul{
   visibility:visible;
-  opacity:1;  
+  opacity:1;
   top: 100%;
   -webkit-transform: translate(0px);
   -ms-transform: translate(0px);
@@ -1556,7 +1556,7 @@ body.visible-search{
     overflow-y: hidden;
 }
 
-/*** 
+/***
 
 ====================================================================
   Hidden Sidebar style
@@ -1621,7 +1621,7 @@ body.visible-sidebar{
   opacity: 1;
   visibility: visible;
   -ms-transform: translateX(0px);
-  transform: translateX(0px); 
+  transform: translateX(0px);
 }
 
 .hidden-bar .nav-logo-box{
@@ -1822,7 +1822,7 @@ body.visible-sidebar{
   display: block;
 }
 
-/*** 
+/***
 
 ====================================================================
   Banner Slider Section
@@ -2069,7 +2069,7 @@ body.visible-sidebar{
   z-index: 0;
 }
 
-/*** 
+/***
 
 ====================================================================
   Banner Slider Section
@@ -2259,7 +2259,7 @@ body.visible-sidebar{
   max-width: none;
 }
 
-/*** 
+/***
 
 ====================================================================
   Title Box
@@ -2364,7 +2364,7 @@ body.visible-sidebar{
 }
 
 
-/*** 
+/***
 
 ====================================================================
   About Us Section
@@ -2522,7 +2522,7 @@ body.visible-sidebar{
 }
 
 
-/*** 
+/***
 
 ====================================================================
   Popular Section
@@ -2567,7 +2567,7 @@ body.visible-sidebar{
 }
 
 .popular-section .content-box{
-  
+
 }
 
 .trek-block-one{
@@ -2812,7 +2812,7 @@ body.visible-sidebar{
 }
 
 
-/*** 
+/***
 
 ====================================================================
   Why Section
@@ -2906,7 +2906,7 @@ body.visible-sidebar{
   position: relative;
 }
 
-/*** 
+/***
 
 ====================================================================
   Trending Destinations Section
@@ -2968,7 +2968,7 @@ body.visible-sidebar{
   background: rgba(29, 197, 206, 0.35);
   border-radius: 8px;
   z-index: 10;
-  
+
   transition: all 900ms ease;
     -moz-transition: all 900ms ease;
     -webkit-transition: all 900ms ease;
@@ -3057,7 +3057,7 @@ body.visible-sidebar{
   margin-top: 10px;
 }
 
-/*** 
+/***
 
 ====================================================================
   Products Section
@@ -3188,7 +3188,7 @@ body.visible-sidebar{
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
   z-index: 1;
-  
+
       background: rgba(29, 197, 206, 0.35);
   transition: all 900ms ease;
     -moz-transition: all 900ms ease;
@@ -3452,7 +3452,7 @@ body.visible-sidebar{
 }
 
 .drop-list-one .dropdown-menu li:last-child{
-  
+
 }
 
 .drop-list-one .dropdown-menu li a{
@@ -3476,7 +3476,7 @@ body.visible-sidebar{
   background: #1DC5CE;
 }
 
-/*** 
+/***
 
 ====================================================================
   Group Travel Section
@@ -3501,7 +3501,7 @@ body.visible-sidebar{
 }
 
 .group-travel .content-box{
-  
+
 }
 
 .travel-block-one{
@@ -3627,7 +3627,7 @@ body.visible-sidebar{
   padding-top: 40px;
 }
 
-/*** 
+/***
 
 ====================================================================
   Testimonials Section
@@ -3666,7 +3666,7 @@ body.visible-sidebar{
 }
 
 .testimonials-one .carousel-box{
-  
+
 }
 
 .testi-block{
@@ -3891,7 +3891,7 @@ body.visible-sidebar{
   color:#ffffff;
 }
 
-/*** 
+/***
 
 ====================================================================
   Sponsors Section
@@ -3919,7 +3919,7 @@ body.visible-sidebar{
 }
 
 .sponsors-one .carousel-box{
-  
+
 }
 
 .sponsors-one .owl-theme .owl-stage-outer{
@@ -3984,7 +3984,7 @@ body.visible-sidebar{
   display: none;
 }
 
-/*** 
+/***
 
 ====================================================================
   News Section
@@ -4017,7 +4017,7 @@ body.visible-sidebar{
 }
 
 .news-section .content-box{
-  
+
 }
 
 .news-block-one{
@@ -4155,7 +4155,7 @@ body.visible-sidebar{
   padding-right: 10px;
 }
 
-/*** 
+/***
 
 ====================================================================
   Newsletter Section
@@ -4290,7 +4290,7 @@ body.visible-sidebar{
   text-transform: uppercase;
 }
 
-/*** 
+/***
 
 ====================================================================
   Main Footer
@@ -4593,7 +4593,7 @@ body.visible-sidebar{
   text-decoration: underline;
 }
 
-/*** 
+/***
 
 ====================================================================
   Why Section
@@ -4679,7 +4679,7 @@ body.visible-sidebar{
   position: relative;
 }
 
-/*** 
+/***
 
 ====================================================================
   About Us Section
@@ -4831,7 +4831,7 @@ body.visible-sidebar{
   max-height: 655px;
 }
 
-/*** 
+/***
 
 ====================================================================
   Trending Destinations Section
@@ -4902,7 +4902,7 @@ body.visible-sidebar{
   background: rgba(29, 197, 206, 0.35);
   border-radius: 8px;
   z-index: 10;
-  
+
   transition: all 900ms ease;
     -moz-transition: all 900ms ease;
     -webkit-transition: all 900ms ease;
@@ -5023,7 +5023,7 @@ body.visible-sidebar{
   background: rgba(29, 197, 206, 0.30);
 }
 
-/*** 
+/***
 
 ====================================================================
   Footer Two
@@ -5229,7 +5229,7 @@ body.visible-sidebar{
   text-decoration: underline;
 }
 
-/*** 
+/***
 
 ====================================================================
   Testimonials Section
@@ -5391,7 +5391,7 @@ body.visible-sidebar{
   color: #1DC5CE;
 }
 
-/*** 
+/***
 
 ====================================================================
   Page Info
@@ -5428,7 +5428,7 @@ body.visible-sidebar{
   color: #1DC5CE;
 }
 
-/*** 
+/***
 
 ====================================================================
   Inner Banner Section
@@ -5555,7 +5555,7 @@ body.visible-sidebar{
   text-decoration: underline;
 }
 
-/*** 
+/***
 
 ====================================================================
   About Us Section
@@ -5735,7 +5735,7 @@ body.visible-sidebar{
   position: relative;
 }
 
-/*** 
+/***
 
 ====================================================================
   Facts Section
@@ -5874,7 +5874,7 @@ body.visible-sidebar{
   line-height: 1.6em;
 }
 
-/*** 
+/***
 
 ====================================================================
   Features Section
@@ -6131,7 +6131,7 @@ body.visible-sidebar{
   opacity: 0.10;
 }
 
-/*** 
+/***
 
 ====================================================================
   Team Section
@@ -6186,7 +6186,7 @@ body.visible-sidebar{
 }
 
 .team-section .carousel-box{
-  
+
 }
 
 .team-block-one{
@@ -6342,7 +6342,7 @@ body.visible-sidebar{
   margin-top: 30px;
 }
 
-/*** 
+/***
 
 ====================================================================
   Trekking Section
@@ -6436,7 +6436,7 @@ body.visible-sidebar{
   margin-top: 30px;
 }
 
-/*** 
+/***
 
 ====================================================================
   FAQ Section
@@ -6510,7 +6510,7 @@ body.visible-sidebar{
 }
 
 .faq-one .accordion-box .block.active-block{
-    
+
 }
 
 .faq-one .accordion-box .block .acc-btn{
@@ -6526,7 +6526,7 @@ body.visible-sidebar{
 }
 
 .faq-one .accordion-box .block.active-block .acc-btn{
-    
+
 }
 
 .faq-one .accordion-box .block .acc-btn i{
@@ -6587,7 +6587,7 @@ body.visible-sidebar{
   display: block;
 }
 
-/*** 
+/***
 
 ====================================================================
   Activities Section
@@ -6840,7 +6840,7 @@ body.visible-sidebar{
   color: #1DC5CE;
 }
 
-/*** 
+/***
 
 ====================================================================
   Destination Tours Section
@@ -7020,7 +7020,7 @@ body.visible-sidebar{
   padding-right: 5px;
 }
 
-/*** 
+/***
 
 ====================================================================
   Destinations Section
@@ -7179,7 +7179,7 @@ body.visible-sidebar{
   background: -moz-linear-gradient(top,rgba(0,0,0,0) 0%, #10221B 100%);
 }
 
-/*** 
+/***
 
 ====================================================================
   Team Member Section
@@ -8163,7 +8163,7 @@ body.visible-sidebar{
   background-color:#ffffff;
 }
 
-/*** 
+/***
 
 ====================================================================
   News Section Two
@@ -8336,7 +8336,7 @@ body.visible-sidebar{
 }
 
 .faq-one .accordion-box .block.active-block{
-    
+
 }
 
 .faq-one .accordion-box .block .acc-btn{
@@ -8352,7 +8352,7 @@ body.visible-sidebar{
 }
 
 .faq-one .accordion-box .block.active-block .acc-btn{
-    
+
 }
 
 .faq-one .accordion-box .block .acc-btn i{
@@ -8513,7 +8513,7 @@ body.visible-sidebar{
 
 .faq-tabs .tab-btns .tab-btn:hover,
 .faq-tabs .tab-btns .tab-btn.active-btn{
-  
+
 }
 
 .faq-tabs .tab-btns .tab-btn:before{
@@ -8546,7 +8546,7 @@ body.visible-sidebar{
 }
 
 .faq-tabs .tabs-content .tab.active-tab{
-  display:block;  
+  display:block;
 }
 
 .faq-tabs .hotel-info{
@@ -8789,7 +8789,7 @@ body.visible-sidebar{
 
 .sidebar-column .search-box .form-group input[type="text"]:focus,
 .sidebar-column .search-box .form-group input[type="search"]:focus{
-  
+
 
 }
 
@@ -8903,7 +8903,7 @@ body.visible-sidebar{
   background-color:#39ccd4;
 }
 
-/*** 
+/***
 
 ====================================================================
   Sidebar Page Container
@@ -8933,7 +8933,7 @@ body.visible-sidebar{
     background-color: #f3f7fa;
 }
 
-/*** 
+/***
 
 ====================================================================
   Styled Pagination
@@ -9524,7 +9524,7 @@ body.visible-sidebar{
   padding-right: 10px;
 }
 
-/*** 
+/***
 
 ====================================================================
   Comments Area
@@ -9536,7 +9536,7 @@ body.visible-sidebar{
   position:relative;
   margin-top:50px;
   margin-bottom:50px;
-  
+
   padding-bottom:30px;
   border-bottom:1px dashed #C7C7C7;
 }
@@ -9577,7 +9577,7 @@ body.visible-sidebar{
 }
 
 .sidebar-page-container .comments-area .reply-comment{
-  margin-left:100px;  
+  margin-left:100px;
 }
 
 .sidebar-page-container .comments-area .comment-box .author-thumb{
@@ -9596,7 +9596,7 @@ body.visible-sidebar{
 }
 
 .sidebar-page-container .comments-area .comment-info{
-  
+
 }
 
 .sidebar-page-container .comments-area .comment-box strong{
@@ -9638,7 +9638,7 @@ body.visible-sidebar{
   color:#000000;
 }
 
-/*** 
+/***
 
 ====================================================================
   Comment Form
@@ -9707,7 +9707,7 @@ body.visible-sidebar{
   border-bottom:2px solid rgba(29,197,206,0.30);
 }
 
-/*** 
+/***
 
 ====================================================================
   Terms Section
@@ -9752,7 +9752,7 @@ body.visible-sidebar{
   position: relative;
 }
 
-/*** 
+/***
 
 ====================================================================
   FAQs Section
@@ -9860,7 +9860,7 @@ body.visible-sidebar{
   display: block;
 }
 
-/*** 
+/***
 
 ====================================================================
   Gallery Section
@@ -9964,7 +9964,7 @@ body.visible-sidebar{
   height: 100%;
   background: #001111;
   z-index: 1;
-  
+
   transition: all 900ms ease;
     -moz-transition: all 900ms ease;
     -webkit-transition: all 900ms ease;
@@ -10034,7 +10034,7 @@ body.visible-sidebar{
   display: block;
 }
 
-/*** 
+/***
 
 ====================================================================
   404 Section
@@ -10118,7 +10118,7 @@ body.visible-sidebar{
   padding-top: 40px;
 }
 
-/*** 
+/***
 
 ====================================================================
   Booking Section
@@ -10186,7 +10186,7 @@ body.visible-sidebar{
   color: #7d7d7d;
 }
 
-/*** 
+/***
 
 ====================================================================
   Login Section
@@ -10206,7 +10206,7 @@ body.visible-sidebar{
 .login-section .login-form{
   position: relative;
   max-width: 570px;
-  margin: 0 auto;
+  margin: 70px auto;
   padding: 40px 40px 10px;
   background: #F3F7FA;
 }
@@ -10253,7 +10253,7 @@ body.visible-sidebar{
   text-decoration: underline;
 }
 
-/*** 
+/***
 
 ====================================================================
   Signup Section
@@ -10296,7 +10296,7 @@ body.visible-sidebar{
   text-decoration: underline;
 }
 
-/*** 
+/***
 
 ====================================================================
   Reset Password Section
@@ -10354,7 +10354,7 @@ body.visible-sidebar{
   padding-right: 15px;
 }
 
-/*** 
+/***
 
 ====================================================================
   Contact Section
@@ -10456,7 +10456,7 @@ body.visible-sidebar{
   text-decoration: underline;
 }
 
-/*** 
+/***
 
 ====================================================================
   Find Us Section
@@ -10524,7 +10524,7 @@ body.visible-sidebar{
 }
 
 .find-us .accordion-box .block.active-block{
-    
+
 }
 
 .find-us .accordion-box .block .acc-btn{
@@ -10540,7 +10540,7 @@ body.visible-sidebar{
 }
 
 .find-us .accordion-box .block.active-block .acc-btn{
-    
+
 }
 
 .find-us .accordion-box .block .acc-btn i{
@@ -10725,7 +10725,7 @@ body.visible-sidebar{
   background: #f0f0f0;
 }
 
-.map-section .map-box iframe, 
+.map-section .map-box iframe,
 .map-section .map-box .map-frame {
     position: absolute;
     left: 0;
@@ -11119,7 +11119,7 @@ body.visible-sidebar{
 .quantity-box .bootstrap-touchspin .input-group-btn-vertical i{
   top: 6px;
   left: 14px;
-  font-size: inherit !important; 
+  font-size: inherit !important;
 }
 
 .quantity-box .bootstrap-touchspin .input-group-btn-vertical .bootstrap-touchspin-down{
@@ -11431,7 +11431,7 @@ body.visible-sidebar{
 }
 
 
-/*** 
+/***
 
 ====================================================================
   Cart Section style
@@ -11445,7 +11445,7 @@ body.visible-sidebar{
 }
 
 .cart-section .cart-outer{
-  position:relative;  
+  position:relative;
 }
 
 .cart-section .table-outer{
@@ -11485,7 +11485,7 @@ body.visible-sidebar{
 
 .cart-table thead tr th.prod-column{
   text-align:left;
-  padding-left:0px;  
+  padding-left:0px;
 }
 
 .cart-table tbody tr{
@@ -11517,7 +11517,7 @@ body.visible-sidebar{
   font-size:17px;
   color:#222222;
   font-weight:500;
-  margin-bottom:5px;  
+  margin-bottom:5px;
 }
 
 .cart-table tbody tr .prod-column .column-box{
@@ -11608,7 +11608,7 @@ body.visible-sidebar{
 }
 
 .cart-section .coupon-outer .link-box{
-   
+
 }
 
 .cart-section .coupon-outer .cart-btn{
@@ -11732,18 +11732,18 @@ body.visible-sidebar{
 }
 
 .cart-section .totals-table li:last-child{
-  margin-bottom:0px; 
-  padding-bottom: 0; 
+  margin-bottom:0px;
+  padding-bottom: 0;
   padding-top: 15px;
   border-bottom: none;
 }
 
 .cart-section .totals-table li .total-price{
-  color:#10221B; 
+  color:#10221B;
 }
 
 .cart-section .totals-table .theme-btn .btn-title{
-  
+
 }
 
 .cart-section .totals-table .theme-btn{
@@ -11751,7 +11751,7 @@ body.visible-sidebar{
   cursor: pointer;
 }
 
-/*** 
+/***
 
 ====================================================================
   Wishlist Section style
@@ -11765,7 +11765,7 @@ body.visible-sidebar{
 }
 
 .wishlist-section .wishlist-outer{
-  position:relative;  
+  position:relative;
 }
 
 .wishlist-section .table-outer{
@@ -11816,14 +11816,14 @@ body.visible-sidebar{
   font-size:16px;
   color:#505050;
   font-weight:600;
-  margin-bottom:10px;  
+  margin-bottom:10px;
 }
 
 .wishlist-table tbody tr .prod-column .price{
   font-size:16px;
   color:#505050;
   font-weight:600;
-  margin-bottom:10px;  
+  margin-bottom:10px;
 }
 
 .wishlist-table tbody tr .prod-column .price span{
@@ -11833,7 +11833,7 @@ body.visible-sidebar{
 .wishlist-table tbody tr .prod-column .date{
   font-size:18px;
   color:#7D7D7D;
-  font-weight:400;  
+  font-weight:400;
 }
 
 .wishlist-table tbody tr .prod-column .column-box{
@@ -11989,7 +11989,7 @@ body.visible-sidebar{
   background: #1DC5CE;
 }
 
-/*** 
+/***
 
 ====================================================================
   CheckOut Sectioon
@@ -12148,12 +12148,12 @@ body.visible-sidebar{
 
 .checkout-page .payment-options li{
   position:relative;
-  margin-bottom:10px;  
+  margin-bottom:10px;
 }
 
 .checkout-page .payment-options li .radio-option{
   position:relative;
-  margin-bottom:12px;   
+  margin-bottom:12px;
 }
 
 .checkout-page .payment-options li .radio-option label{
@@ -12176,15 +12176,15 @@ body.visible-sidebar{
   font-size:15px;
   color:#3cc88f;
   margin-left:25px;
-  font-weight:400;  
+  font-weight:400;
   text-decoration:underline;
-  
+
 }
 
 .checkout-page .payment-options li .radio-option input[type="radio"]{
   position:absolute;
   left:0px;
-  top:7px;  
+  top:7px;
   color: #1DC5CE;
   opacity: 1;
   -webkit-transform: scale(1.5);
@@ -12195,7 +12195,7 @@ body.visible-sidebar{
 .checkout-page .payment-options .agreement{
   position:relative;
   margin-top: 25px;
-  margin-bottom:25px;   
+  margin-bottom:25px;
 }
 
 .checkout-page .payment-options .agreement label{
@@ -12217,7 +12217,7 @@ body.visible-sidebar{
   position:absolute;
   left:0px;
   color: #1DC5CE;
-  top:7px;  
+  top:7px;
   opacity: 1;
   -webkit-transform: scale(1.5);
   -ms-transform: scale(1.5);
@@ -12234,7 +12234,7 @@ body.visible-sidebar{
   cursor: pointer;
 }
 
-/*** 
+/***
 
 ====================================================================
   Cart Sidebar
@@ -12265,7 +12265,7 @@ body.visible-sidebar{
   opacity: 1;
   visibility: visible;
   -ms-transform: translateX(0px);
-  transform: translateX(0px); 
+  transform: translateX(0px);
 }
 
 .cart-sidebar .cart-side-inner{
