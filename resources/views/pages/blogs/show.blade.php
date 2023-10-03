@@ -31,31 +31,15 @@
                         <div class="news-detail">
                             <div class="inner-box">
                                 <div class="image-box">
-                                    <div class="image"><img src="{{ asset('assets/website') }}/images/resource/news-4.jpg" alt="" title=""></div>
+                                    <div class="image"><img src="{{ asset('storage') }}/images/blogs/{{$blog->image}}" alt="" title=""></div>
                                 </div>
                                 <div class="lower-content">
                                     <div class="info">
-                                        <span class="i-block">By : Sword Joy</span> &ensp; | &ensp; <span
-                                            class="i-block">20 March 2022</span>
+                                        <span class="i-block">By : {{$blog->author_name}}</span> &ensp; | &ensp; <span
+                                            class="i-block">{{ date('d M Y', strtotime($blog->created_at))}}</span>
                                     </div>
-                                    <h4>THE UPCOMING WBC CHAMP SHIPS 2022 in feb</h4>
-                                    <p>There are many reasons why an executive or VIP would choose personal security
-                                        services. Executives could be in charge of large companies that are worth
-                                        millions or more, leaving them to be a high-valued target for robbery,
-                                        assault, and more. There could be threats made against executives and even
-                                        bribery and blackmail from a member of the public or disgruntled employees.
-                                        When it comes to other VIPs, they do not need necessarily need to be..</p>
-                                    <ul class="feature-list">
-                                        <li>Free Download Instagram Logo</li>
-                                        <li>Illustrator from Instagram Logo 9 Vectors svg vector collection</li>
-                                        <li>Vectors SVG vector illustration graphic art design format.</li>
-                                        <li>Following vectors are from the same pack as this vector also</li>
-                                        <li>Instagram Logo SVG Vector is a part of Social Websites</li>
-                                    </ul>
-                                    <p>The use of bodyguards with executives and VIPs is on the rise due to their
-                                        many benefits, with the first one being obvious that they can help defend
-                                        against physical harm. A bodyguard should be well trained in defense and
-                                        know how to handle a possible attack.</p>
+                                    <h4>{{$blog->title}}</h4>
+                                    {!! $blog->description !!}
                                     {{-- <div class="gallery-box">
                                         <div class="row clearfix">
                                             <!-- Column -->
@@ -79,14 +63,14 @@
                                         Stay-at-Home Parents
                                         <span>JHON SMITH</span>
                                     </blockquote> --}}
-                                    <p>An executive of VIP bodyguard can also check for potential vulnerability in
+                                    {{-- <p>An executive of VIP bodyguard can also check for potential vulnerability in
                                         the home and/or transportation, even transportation routes, adding extra
                                         reinforcement or making changes where needed. They can give helpful advice
                                         on how to stay safe and what to do in the event of a dangerous situation.
                                         Finally, a bodyguard presence can act as a deterrent against potential
                                         dangers. When a bodyguard is seen, it may put people off from trying
                                         anything against highly trained personal security. Of course, some people
-                                        may prefer their bodyguards in plain clothing.</p>
+                                        may prefer their bodyguards in plain clothing.</p> --}}
                                     <!-- Post Share Options-->
                                     {{-- <div class="post-share-options">
                                         <div class="tags"><span class="tag">Tags:</span><a href="#">Fashion</a><a
@@ -373,32 +357,17 @@
                                 <h5>Recent Post</h5>
                             </div>
 
+                            @forelse ($recentBlogs as $blog)
                             <article class="post">
-                                <figure class="post-thumb"><img src="{{ asset('assets/website') }}/images/resource/post-thumb-1.jpg" alt=""><a
-                                        href="news-detail.html" class="overlay-box"><span
+                                <figure class="post-thumb"><img src="{{ asset('storage') }}/images/blogs/{{$blog->thumbnail}}" alt=""><a
+                                        href="{{route('blogs.show', $blog)}}" class="overlay-box"><span
                                             class="icon fa fa-link"></span></a></figure>
-                                <div class="text"><a href="news-detail.html">the best beach hikes on the west
-                                        coast</a></div>
-                                <div class="post-info">20 March 2022</div>
+                                <div class="text"><a href="{{route('blogs.show', $blog)}}">{{$blog->title}}</a></div>
+                                <div class="post-info">{{ date('d M Y', strtotime($blog->created_at))}}</div>
                             </article>
-
-                            <article class="post">
-                                <figure class="post-thumb"><img src="{{ asset('assets/website') }}/images/resource/post-thumb-2.jpg" alt=""><a
-                                        href="news-detail.html" class="overlay-box"><span
-                                            class="icon fa fa-link"></span></a></figure>
-                                <div class="text"><a href="news-detail.html">New: Freehand Template for the
-                                        whole</a></div>
-                                <div class="post-info">20 March 2022</div>
-                            </article>
-
-                            <article class="post">
-                                <figure class="post-thumb"><img src="{{ asset('assets/website') }}/images/resource/post-thumb-3.jpg" alt=""><a
-                                        href="news-detail.html" class="overlay-box"><span
-                                            class="icon fa fa-link"></span></a></figure>
-                                <div class="text"><a href="news-detail.html">Security isn’t just a techn logy
-                                        problem it’s</a></div>
-                                <div class="post-info">20 March 2022</div>
-                            </article>
+                            @empty
+                            <p style="text-align:center;">No Blogs to Show.</p>
+                            @endforelse
 
                         </div>
 

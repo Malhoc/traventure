@@ -20,7 +20,11 @@
                             <li><a href="#">Rus</a></li>
                         </ul>
                     </div> --}}
+                    @guest()
                     <div class="login"><i class="icon fa fa-user"></i> <a href="{{ route('login') }}">SIGN IN</a></div>
+                    @else
+                    <div class="login"><i class="icon fa fa-user"></i> <a href="{{ route('login') }}">{{ Auth::user()->name }}</a></div>
+                    @endguest
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tour;
+use App\Models\TourCategory;
 use Illuminate\Http\Request;
 
 class TourController extends Controller
@@ -12,7 +13,9 @@ class TourController extends Controller
      */
     public function index()
     {
-        return view('pages.tours.index');
+        $categories = TourCategory::orderBy('id', 'DESC')->get();
+        $tours = Tour::orderBy('id', 'DESC')->with('category')->paginate(9);
+        return view('pages.tours.index', compact('tours', 'categories'));
     }
 
     /**
@@ -36,7 +39,8 @@ class TourController extends Controller
      */
     public function show(Tour $tour)
     {
-        return view('pages.tours.show');
+        $popularTours = Tour::orderBy('id', 'DESC')->paginate(6);
+        return view('pages.tours.show', compact('tour', 'popularTours'));
     }
 
     /**

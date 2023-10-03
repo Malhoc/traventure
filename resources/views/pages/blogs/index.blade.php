@@ -27,128 +27,39 @@
                 <div class="content-side col-xl-8 col-lg-7 col-md-12 col-sm-12">
                     <div class="blog-classic">
 
+                        @forelse ($blogs as $blog)
                         <!-- Block -->
                         <div class="news-block-two">
                             <div class="inner-box">
                                 <div class="image-box">
-                                    <div class="image"><a href="{{route('blogs.show', 1)}}"><img
-                                                src="{{ asset('assets/website') }}/images/resource/news-4.jpg" alt="" title=""></a></div>
+                                    <div class="image"><a href="{{route('blogs.show', $blog)}}"><img
+                                                src="{{ asset('storage') }}/images/blogs/{{$blog->thumbnail}}" alt="" title=""></a></div>
                                     <div class="overlay-box">
-                                        <div class="category">Trekking</div>
-                                        <h4><a href="{{route('blogs.show', 1)}}">THE UPCOMING WBC CHAMP SHIPS 2022 in feb</a>
+                                        <div class="category">{{isset($tour->category) ? $tour->category->name : ''}}</div>
+                                        <h4><a href="{{route('blogs.show', $blog)}}">{{$blog->title}}</a>
                                         </h4>
                                     </div>
                                 </div>
                                 <div class="lower-content">
                                     <div class="info">
-                                        <span class="i-block">By : Sword Joy</span> &ensp; | &ensp; <span
-                                            class="i-block">20 March 2022</span>
+                                        <span class="i-block">By : {{$blog->author_name}}</span> &ensp; | &ensp; <span
+                                            class="i-block">{{date('d M Y', strtotime($blog->created_at))}}</span>
                                     </div>
-                                    <div class="text">Far far away, behind the word mountains, far from the
-                                        countries Vokalia and Consonantia, there live the blind texts. Separated
-                                        they live in Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts. Separated they live
-                                        in...</div>
-                                    <a class="theme-btn read-more" href="{{route('blogs.show', 1)}}">Read More <span
+                                    <div class="text">{{$blog->summary}}</div>
+                                    <a class="theme-btn read-more" href="{{route('blogs.show', $blog)}}">Read More <span
                                             class="fa fa-angle-right"></span></a>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Block -->
-                        <div class="news-block-two">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <div class="image"><a href="{{route('blogs.show', 1)}}"><img
-                                                src="{{ asset('assets/website') }}/images/resource/news-4.jpg" alt="" title=""></a></div>
-                                    <div class="overlay-box">
-                                        <div class="category">Trekking</div>
-                                        <h4><a href="{{route('blogs.show', 1)}}">THE UPCOMING WBC CHAMP SHIPS 2022 in feb</a>
-                                        </h4>
-                                    </div>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="info">
-                                        <span class="i-block">By : Sword Joy</span> &ensp; | &ensp; <span
-                                            class="i-block">20 March 2022</span>
-                                    </div>
-                                    <div class="text">Far far away, behind the word mountains, far from the
-                                        countries Vokalia and Consonantia, there live the blind texts. Separated
-                                        they live in Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts. Separated they live
-                                        in...</div>
-                                    <a class="theme-btn read-more" href="{{route('blogs.show', 1)}}">Read More <span
-                                            class="fa fa-angle-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
+                        @empty
+                        <p style="text-align:center;">No Blogs to Show.</p>
+                        @endforelse
 
-                        <!-- Block -->
-                        <div class="news-block-two">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <div class="image"><a href="{{route('blogs.show', 1)}}"><img
-                                                src="{{ asset('assets/website') }}/images/resource/news-4.jpg" alt="" title=""></a></div>
-                                    <div class="overlay-box">
-                                        <div class="category">Trekking</div>
-                                        <h4><a href="{{route('blogs.show', 1)}}">THE UPCOMING WBC CHAMP SHIPS 2022 in feb</a>
-                                        </h4>
-                                    </div>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="info">
-                                        <span class="i-block">By : Sword Joy</span> &ensp; | &ensp; <span
-                                            class="i-block">20 March 2022</span>
-                                    </div>
-                                    <div class="text">Far far away, behind the word mountains, far from the
-                                        countries Vokalia and Consonantia, there live the blind texts. Separated
-                                        they live in Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts. Separated they live
-                                        in...</div>
-                                    <a class="theme-btn read-more" href="{{route('blogs.show', 1)}}">Read More <span
-                                            class="fa fa-angle-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Block -->
-                        <div class="news-block-two">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <div class="image"><a href="{{route('blogs.show', 1)}}"><img
-                                                src="{{ asset('assets/website') }}/images/resource/news-4.jpg" alt="" title=""></a></div>
-                                    <div class="overlay-box">
-                                        <div class="category">Trekking</div>
-                                        <h4><a href="{{route('blogs.show', 1)}}">THE UPCOMING WBC CHAMP SHIPS 2022 in feb</a>
-                                        </h4>
-                                    </div>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="info">
-                                        <span class="i-block">By : Sword Joy</span> &ensp; | &ensp; <span
-                                            class="i-block">20 March 2022</span>
-                                    </div>
-                                    <div class="text">Far far away, behind the word mountains, far from the
-                                        countries Vokalia and Consonantia, there live the blind texts. Separated
-                                        they live in Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts. Separated they live
-                                        in...</div>
-                                    <a class="theme-btn read-more" href="{{route('blogs.show', 1)}}">Read More <span
-                                            class="fa fa-angle-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
 
                         <!-- Styled Pagination -->
-                        <ul class="styled-pagination">
-                            <li class="prev"><a href="#">Prev</a></li>
-                            <li><a href="#" class="active">01</a></li>
-                            <li><a href="#">02</a></li>
-                            <li><a href="#">03</a></li>
-                            <li><a href="#">04</a></li>
-                            <li><a href="#">05</a></li>
-                            <li class="next"><a href="#">Next</a></li>
-                        </ul>
+                        {{ $blogs->links('pagination::bootstrap-5') }}
                         <!-- End Styled Pagination -->
 
                     </div>
@@ -219,33 +130,19 @@
                             <div class="sidebar-title">
                                 <h5>Recent Post</h5>
                             </div>
-
+                            @forelse ($recentBlogs as $blog)
                             <article class="post">
-                                <figure class="post-thumb"><img src="{{ asset('assets/website') }}/images/resource/post-thumb-1.jpg" alt=""><a
-                                        href="{{route('blogs.show', 1)}}" class="overlay-box"><span
+                                <figure class="post-thumb"><img src="{{ asset('storage') }}/images/blogs/{{$blog->thumbnail}}" alt=""><a
+                                        href="{{route('blogs.show', $blog)}}" class="overlay-box"><span
                                             class="icon fa fa-link"></span></a></figure>
-                                <div class="text"><a href="{{route('blogs.show', 1)}}">the best beach hikes on the west
-                                        coast</a></div>
-                                <div class="post-info">20 March 2022</div>
+                                <div class="text"><a href="{{route('blogs.show', $blog)}}">{{$blog->title}}</a></div>
+                                <div class="post-info">{{ date('d M Y', strtotime($blog->created_at))}}</div>
                             </article>
+                            @empty
+                            <p style="text-align:center;">No Blogs to Show.</p>
+                            @endforelse
 
-                            <article class="post">
-                                <figure class="post-thumb"><img src="{{ asset('assets/website') }}/images/resource/post-thumb-2.jpg" alt=""><a
-                                        href="{{route('blogs.show', 1)}}" class="overlay-box"><span
-                                            class="icon fa fa-link"></span></a></figure>
-                                <div class="text"><a href="{{route('blogs.show', 1)}}">New: Freehand Template for the
-                                        whole</a></div>
-                                <div class="post-info">20 March 2022</div>
-                            </article>
 
-                            <article class="post">
-                                <figure class="post-thumb"><img src="{{ asset('assets/website') }}/images/resource/post-thumb-3.jpg" alt=""><a
-                                        href="{{route('blogs.show', 1)}}" class="overlay-box"><span
-                                            class="icon fa fa-link"></span></a></figure>
-                                <div class="text"><a href="{{route('blogs.show', 1)}}">Security isn’t just a techn logy
-                                        problem it’s</a></div>
-                                <div class="post-info">20 March 2022</div>
-                            </article>
 
                         </div>
 

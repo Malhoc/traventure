@@ -25,21 +25,13 @@ Route::controller(App\Http\Controllers\ContactUsController::class)->prefix('cont
 //tour
 Route::controller(App\Http\Controllers\TourController::class)->prefix('tours')->name('tours.')->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::post('/store', 'store')->name('store');
-    Route::get('/{tour2}', 'show')->name('show');
-    Route::get('/{tour2}/edit', 'edit')->name('edit');
-    Route::put('/{id}', 'update')->name('update');
-    Route::delete('/{tour2:id}', 'destroy')->name('destroy');
+    Route::get('/{tour}', 'show')->name('show');
 });
 
 //blog
 Route::controller(App\Http\Controllers\BlogController::class)->prefix('blogs')->name('blogs.')->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::post('/store', 'store')->name('store');
-    Route::get('/{tour}', 'show')->name('show');
-    Route::get('/{tour}/edit', 'edit')->name('edit');
-    Route::put('/{id}', 'update')->name('update');
-    Route::delete('/{tour:id}', 'destroy')->name('destroy');
+    Route::get('/{blog}', 'show')->name('show');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -85,6 +77,28 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Tours
         Route::prefix('tours')->name('tours.')->group(function () {
+            // Categories
+            Route::prefix('categories')->name('categories.')->group(function () {
+                Route::get('/', [App\Http\Controllers\Admin\TourCategoryController::class, 'index'])->name('index');
+                Route::get('/create', [App\Http\Controllers\Admin\TourCategoryController::class, 'create'])->name('create');
+                Route::post('/store', [App\Http\Controllers\Admin\TourCategoryController::class, 'store'])->name('store');
+                Route::get('/{category}', [App\Http\Controllers\Admin\TourCategoryController::class, 'show'])->name('show');
+                Route::get('/{category}/edit', [App\Http\Controllers\Admin\TourCategoryController::class, 'edit'])->name('edit');
+                Route::put('/{id}', [App\Http\Controllers\Admin\TourCategoryController::class, 'update'])->name('update');
+                Route::delete('/{category:id}', [App\Http\Controllers\Admin\TourCategoryController::class, 'destroy'])->name('destroy');
+            });
+
+            // Destinations
+            Route::prefix('destination')->name('destination.')->group(function () {
+                Route::get('/', [App\Http\Controllers\Admin\DestinationController::class, 'index'])->name('index');
+                Route::get('/create', [App\Http\Controllers\Admin\DestinationController::class, 'create'])->name('create');
+                Route::post('/store', [App\Http\Controllers\Admin\DestinationController::class, 'store'])->name('store');
+                Route::get('/{destination}', [App\Http\Controllers\Admin\DestinationController::class, 'show'])->name('show');
+                Route::get('/{destination}/edit', [App\Http\Controllers\Admin\DestinationController::class, 'edit'])->name('edit');
+                Route::put('/{destination}', [App\Http\Controllers\Admin\DestinationController::class, 'update'])->name('update');
+                Route::delete('/{destination:id}', [App\Http\Controllers\Admin\DestinationController::class, 'destroy'])->name('destroy');
+            });
+
             Route::get('/', [App\Http\Controllers\Admin\TourController::class, 'index'])->name('index');
             Route::get('/create', [App\Http\Controllers\Admin\TourController::class, 'create'])->name('create');
             Route::post('/store', [App\Http\Controllers\Admin\TourController::class, 'store'])->name('store');
@@ -92,6 +106,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/{tour}/edit', [App\Http\Controllers\Admin\TourController::class, 'edit'])->name('edit');
             Route::put('/{id}', [App\Http\Controllers\Admin\TourController::class, 'update'])->name('update');
             Route::delete('/{tour:id}', [App\Http\Controllers\Admin\TourController::class, 'destroy'])->name('destroy');
+
         });
+
     });
 });

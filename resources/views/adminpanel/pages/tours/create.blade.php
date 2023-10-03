@@ -1,7 +1,7 @@
 @extends('adminpanel.layouts.app')
 
 @section('title-meta')
-    <title>{{ config('app.name') }} | Product Create</title>
+    <title>{{ config('app.name') }} | Tour Create</title>
 
     <meta name="description" content="this is description">
 @endsection
@@ -18,10 +18,10 @@
 
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-sm-4">
-                <h2>Blog Management</h2>
+                <h2>Tour Management</h2>
                 <ol class="breadcrumb">
                     <li>
-                        <a href="index.html">Blog</a>
+                        <a href="index.html">Tour</a>
                     </li>
                     <li class="active">
                         <strong>Create</strong>
@@ -30,7 +30,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="title-action">
-                    <a href="{{ route('admin.blogs.index') }}" class="btn btn-primary">Show List</a>
+                    <a href="{{ route('admin.tours.index') }}" class="btn btn-primary">Show List</a>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
                                 <div class="panel-body">
 
                                     <form id="blogForm" class="form-horizontal" method="POST"
-                                        action="{{ route('admin.blogs.store') }}" enctype="multipart/form-data">
+                                        action="{{ route('admin.tours.store') }}" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group @error('title') has-error @enderror"><label
                                                 class="col-sm-2 control-label">Title:</label>
@@ -73,16 +73,85 @@
                                             </div>
 
                                         </div>
-                                        <div class="form-group @error('author_name') has-error @enderror"><label
-                                                class="col-sm-2 control-label">Author:</label>
-                                            <div class="col-sm-10"><input id="author_name" value="{{ old('author_name') }}"
-                                                    name="author_name" required type="text" placeholder="Unique"
-                                                    class="form-control">
-                                                @error('author_name')
+                                        <div class="form-group ">
+                                            <label class="col-sm-2 control-label">Price:</label>
+                                            <div class="col-sm-4"><input id="price" value="{{ old('price') }}"
+                                                    name="price" required type="number" class="form-control">
+                                                @error('price')
                                                     <span class="help-block m-b-none">{{ $message }}</span>
                                                 @enderror
                                             </div>
 
+                                            <label class="col-sm-2 control-label">Group Limit:</label>
+                                            <div class="col-sm-4"><input id="group_limit" value="{{ old('group_limit') }}"
+                                                    name="group_limit" required type="number" class="form-control">
+                                                @error('group_limit')
+                                                    <span class="help-block m-b-none">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group @error('duration') has-error @enderror">
+                                            <label class="col-sm-2 control-label">Duration:</label>
+                                            <div class="col-sm-4"><input id="duration" value="{{ old('duration') }}"
+                                                    name="duration" required type="text" class="form-control" placeholder="e.g. 3 Days, 1 Month, 2 Weeks" >
+                                                @error('duration')
+                                                    <span class="help-block m-b-none">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+
+
+                                        </div>
+                                        <div class="form-group @error('facilities') has-error @enderror"><label
+                                                class="col-sm-2 control-label">Facilities:</label>
+                                            <div class="col-sm-10"><input id="facilities" value="{{ old('facilities') }}"
+                                                    name="facilities" required type="text"
+                                                    placeholder="comma seprated values, e.g Dinner,Extra Clothes, 3 time Food"
+                                                    class="form-control">
+                                                @error('facilities')
+                                                    <span class="help-block m-b-none">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group @error('features') has-error @enderror"><label
+                                                class="col-sm-2 control-label">Features:</label>
+                                            <div class="col-sm-10"><input id="features" value="{{ old('features') }}"
+                                                    name="features" required type="text"
+                                                    placeholder="comma seprated values, e.g Dinner,Extra Clothes, 3 time Food"
+                                                    class="form-control">
+                                                @error('features')
+                                                    <span class="help-block m-b-none">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Destination / Location</label>
+
+                                            <div class="col-sm-10 @error('destination_id') has-error @enderror ">
+                                                <select id="destination_id" name="destination_id" class="form-control m-b" required>
+                                                    @foreach ($destinations as $destination)
+                                                    <option value="{{$destination->id}}">{{$destination->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Category</label>
+
+                                            <div class="col-sm-10 @error('tour_category_id') has-error @enderror ">
+                                                <select id="tour_category_id" name="tour_category_id" class="form-control m-b" required>
+                                                    @foreach ($categories as $category)
+                                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
 
                                         <div class="form-group @error('summary') has-error @enderror"><label
@@ -107,7 +176,7 @@
 
                                         <div class="hr-line-dashed"></div>
 
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <label class="col-sm-2 control-label">Visible</label>
 
                                             <div class="col-sm-10 @error('is_active') has-error @enderror ">
@@ -115,9 +184,8 @@
                                                     <option selected value="1">Public</option>
                                                     <option value="0">Private</option>
                                                 </select>
-                                                t
                                             </div>
-                                        </div>
+                                        </div> --}}
 
 
                                         <div class="hr-line-dashed"></div>
@@ -142,17 +210,24 @@
 
                                         </div>
                                         <div class="form-group"><label class="col-sm-2 control-label">Thumbnail Image
-                                                (350x236):</label>
+                                                (310x291):</label>
                                             <div class="col-sm-10"><input name="thumbnail" accept=".png, .jpg, jpeg."
                                                     type="file" class="form-control" placeholder="jpeg, jpg, png ...">
                                             </div>
                                         </div>
                                         <div class="form-group"><label class="col-sm-2 control-label">Full Image
-                                                (750x440):</label>
+                                                (1920x580):</label>
                                             <div class="col-sm-10"><input name="image" accept=".png, .jpg, jpeg."
                                                     type="file" class="form-control" placeholder="jpeg, jpg, png ...">
                                             </div>
                                         </div>
+
+                                        <div class="form-group"><label class="col-sm-2 control-label">Gallery
+                                            (770x370):</label>
+                                        <div class="col-sm-10"><input name="gallery" accept=".png, .jpg, jpeg."
+                                                type="file" multiple class="form-control" placeholder="jpeg, jpg, png ...">
+                                        </div>
+                                    </div>
 
                                     </fieldset>
                                     <div class="hr-line-dashed"></div>

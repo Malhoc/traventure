@@ -2,7 +2,7 @@
 
 @section('content')
     <!--Page Info-->
-		<section class="page-info">
+		{{-- <section class="page-info">
 			<div class="auto-container">
 				<div class="links">
 					<a href="{{route('index')}}">Home</a> &ensp;<i class="fa fa-caret-right"></i>&ensp; <a
@@ -11,10 +11,10 @@
 						class="current">Discover Rajasthan</span>
 				</div>
 			</div>
-		</section>
+		</section> --}}
 
 		<!-- Banner Section -->
-		<section class="packages-banner style-two" style="background-image: url({{ asset('assets/website') }}/images/background/banner-3.jpg);">
+		<section class="packages-banner style-two" style="background-image: url({{ asset('storage') }}/images/tours/{{$tour->image}});">
 		</section>
 		<!--End Banner Section -->
 
@@ -29,10 +29,10 @@
 						<div class="upper-box">
 							<div class="clearfix">
 								<div class="pull-left">
-									<h4>Discover Rajasthan</h4>
+									<h4>{{$tour->title}}</h4>
 								</div>
 								<div class="pull-right">
-									<div class="price">$120<span>/Person</span></div>
+									<div class="price">${{$tour->price}}<span>/Person</span></div>
 								</div>
 							</div>
 						</div>
@@ -46,7 +46,7 @@
 									<div class="inner-box">
 										<div class="icon"><img src="{{ asset('assets/website') }}/images/icons/duration.svg" alt="" /></div>
 										<strong>Duration</strong>
-										4 Days
+										{{$tour->duration}}
 									</div>
 								</div>
 
@@ -55,7 +55,7 @@
 									<div class="inner-box">
 										<div class="icon"><img src="{{ asset('assets/website') }}/images/icons/category-icon.svg" alt="" /></div>
 										<strong>Category</strong>
-										Family Trip
+										{{isset($tour->category) ? $tour->category->name : ''}}
 									</div>
 								</div>
 
@@ -64,7 +64,7 @@
 									<div class="inner-box">
 										<div class="icon"><img src="{{ asset('assets/website') }}/images/icons/team-group.svg" alt="" /></div>
 										<strong>Group Size</strong>
-										30 Person
+										{{$tour->group_limit}} Person
 									</div>
 								</div>
 
@@ -99,15 +99,8 @@
 						</div> --}}
 						<!-- Rating Box -->
 
-						<h5>About Rajasthan</h5>
-						<p>There are many reasons why an executive or VIP would choose personal security services.
-							Executives could be in charge of large companies that are worth millions or more, leaving
-							them to be a high-valued target for robbery, assault, and more. There could be threats made
-							against executives and even bribery and blackmail from a member of the public or disgruntled
-							employees. When it comes to other VIPs, they do not need necessarily need to be..</p>
-						<p>Leaving them to be a high-valued target for robbery, assault, and more. There could be
-							threats made against executives and even bribery and blackmail from a member of the public
-							or disgruntled employees. When it comes to other VIPs</p>
+						<h5>{{$tour->title}}</h5>
+						{!! $tour->description !!}
 						<div class="feature-box">
 							<h5>Features</h5>
 							<ul class="feature-list">
@@ -804,7 +797,7 @@
 						<div class="map-box">
 							<h5>Location</h5>
 							<!--Map Outer-->
-                            USA, Taxes
+                            {{isset($tour->destination) ? $tour->destination->name : ''}}
 							{{-- <div class="map-outer">
 								<iframe
 									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d805184.6331292129!2d144.49266890254142!3d-37.97123689954809!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad646b5d2ba4df7%3A0x4045675218ccd90!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2s!4v1574408946759!5m2!1sen!2s"
@@ -945,239 +938,37 @@
 
 					<div class="popular-carousel owl-theme owl-carousel">
 
+                        @forelse ($popularTours as $tour)
+
 						<!--Block-->
 						<div class="activity-block-two">
 							<div class="inner-box">
 								<div class="image-box">
-									<div class="image"><a href="#"><img src="{{ asset('assets/website') }}/images/resource/activity-7.jpg" alt=""
+									<div class="image"><a href="#"><img src="{{ asset('storage') }}/images/tours/{{$tour->thumbnail}}" alt=""
 												title=""></a></div>
 								</div>
 								<div class="lower-content">
-									<div class="price"><span>$120</span></div>
-									<h4><a href="{{route('tours.show', 1)}}">Nahargarh Fort</a></h4>
+									<div class="price"><span>${{$tour->price}}</span></div>
+									<h4><a href="{{route('tours.show', $tour)}}">{{$tour->title}}</a></h4>
 									<div class="ratings clearfix">
 										{{-- <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
 												class="fa fa-star"></i><i class="fa fa-star"></i><i
 												class="fa fa-star empty"></i></div>
 										<div class="rev"><a href="#">05 Review</a></div> --}}
 									</div>
-									<div class="text">Richly varied landscapes, luxurious accommodation.</div>
+									<div class="text">{{$tour->summary}}</div>
 									<ul class="bottom-box">
-										<li><span class="icon far fa-clock fa-fw"></span>5 days</li>
-										<li>259P, Himalaya Ag</li>
+										<li><span class="icon far fa-clock fa-fw"></span>{{$tour->duration}}</li>
+										<li>{{isset($tour->destination) ? $tour->destination->name : ''}}</li>
 									</ul>
 								</div>
 
 							</div>
 						</div>
+                        @empty
+                        <p style="text-align:center;">No Tours to Show.</p>
+                        @endforelse
 
-						<!--Block-->
-						<div class="activity-block-two">
-							<div class="inner-box">
-								<div class="image-box">
-									<div class="image"><a href="#"><img src="{{ asset('assets/website') }}/images/resource/activity-8.jpg" alt=""
-												title=""></a></div>
-								</div>
-								<div class="lower-content">
-									<div class="price"><span>$120</span></div>
-									<h4><a href="{{route('tours.show', 1)}}">Jal Mahal</a></h4>
-									<div class="ratings clearfix">
-										{{-- <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star empty"></i></div>
-										<div class="rev"><a href="#">05 Review</a></div> --}}
-									</div>
-									<div class="text">Richly varied landscapes, luxurious accommodation.</div>
-									<ul class="bottom-box">
-										<li><span class="icon far fa-clock fa-fw"></span>5 days</li>
-										<li>259P, Himalaya Ag</li>
-									</ul>
-								</div>
-
-							</div>
-						</div>
-
-						<!--Block-->
-						<div class="activity-block-two">
-							<div class="inner-box">
-								<div class="image-box">
-									<div class="image"><a href="#"><img src="{{ asset('assets/website') }}/images/resource/activity-9.jpg" alt=""
-												title=""></a></div>
-								</div>
-								<div class="lower-content">
-									<div class="price"><span>$120</span></div>
-									<h4><a href="{{route('tours.show', 1)}}">Chittorgarh</a></h4>
-									<div class="ratings clearfix">
-										{{-- <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star empty"></i></div>
-										<div class="rev"><a href="#">05 Review</a></div> --}}
-									</div>
-									<div class="text">Richly varied landscapes, luxurious accommodation.</div>
-									<ul class="bottom-box">
-										<li><span class="icon far fa-clock fa-fw"></span>5 days</li>
-										<li>259P, Himalaya Ag</li>
-									</ul>
-								</div>
-
-							</div>
-						</div>
-
-						<!--Block-->
-						<div class="activity-block-two">
-							<div class="inner-box">
-								<div class="image-box">
-									<div class="image"><a href="#"><img src="{{ asset('assets/website') }}/images/resource/activity-7.jpg" alt=""
-												title=""></a></div>
-								</div>
-								<div class="lower-content">
-									<div class="price"><span>$120</span></div>
-									<h4><a href="{{route('tours.show', 1)}}">Nahargarh Fort</a></h4>
-									<div class="ratings clearfix">
-										{{-- <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star empty"></i></div>
-										<div class="rev"><a href="#">05 Review</a></div> --}}
-									</div>
-									<div class="text">Richly varied landscapes, luxurious accommodation.</div>
-									<ul class="bottom-box">
-										<li><span class="icon far fa-clock fa-fw"></span>5 days</li>
-										<li>259P, Himalaya Ag</li>
-									</ul>
-								</div>
-
-							</div>
-						</div>
-
-						<!--Block-->
-						<div class="activity-block-two">
-							<div class="inner-box">
-								<div class="image-box">
-									<div class="image"><a href="#"><img src="{{ asset('assets/website') }}/images/resource/activity-8.jpg" alt=""
-												title=""></a></div>
-								</div>
-								<div class="lower-content">
-									<div class="price"><span>$120</span></div>
-									<h4><a href="{{route('tours.show', 1)}}">Jal Mahal</a></h4>
-									<div class="ratings clearfix">
-										{{-- <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star empty"></i></div>
-										<div class="rev"><a href="#">05 Review</a></div> --}}
-									</div>
-									<div class="text">Richly varied landscapes, luxurious accommodation.</div>
-									<ul class="bottom-box">
-										<li><span class="icon far fa-clock fa-fw"></span>5 days</li>
-										<li>259P, Himalaya Ag</li>
-									</ul>
-								</div>
-
-							</div>
-						</div>
-
-						<!--Block-->
-						<div class="activity-block-two">
-							<div class="inner-box">
-								<div class="image-box">
-									<div class="image"><a href="#"><img src="{{ asset('assets/website') }}/images/resource/activity-9.jpg" alt=""
-												title=""></a></div>
-								</div>
-								<div class="lower-content">
-									<div class="price"><span>$120</span></div>
-									<h4><a href="{{route('tours.show', 1)}}">Chittorgarh</a></h4>
-									<div class="ratings clearfix">
-										{{-- <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star empty"></i></div>
-										<div class="rev"><a href="#">05 Review</a></div> --}}
-									</div>
-									<div class="text">Richly varied landscapes, luxurious accommodation.</div>
-									<ul class="bottom-box">
-										<li><span class="icon far fa-clock fa-fw"></span>5 days</li>
-										<li>259P, Himalaya Ag</li>
-									</ul>
-								</div>
-
-							</div>
-						</div>
-
-						<!--Block-->
-						<div class="activity-block-two">
-							<div class="inner-box">
-								<div class="image-box">
-									<div class="image"><a href="#"><img src="{{ asset('assets/website') }}/images/resource/activity-7.jpg" alt=""
-												title=""></a></div>
-								</div>
-								<div class="lower-content">
-									<div class="price"><span>$120</span></div>
-									<h4><a href="{{route('tours.show', 1)}}">Nahargarh Fort</a></h4>
-									<div class="ratings clearfix">
-										{{-- <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star empty"></i></div>
-										<div class="rev"><a href="#">05 Review</a></div> --}}
-									</div>
-									<div class="text">Richly varied landscapes, luxurious accommodation.</div>
-									<ul class="bottom-box">
-										<li><span class="icon far fa-clock fa-fw"></span>5 days</li>
-										<li>259P, Himalaya Ag</li>
-									</ul>
-								</div>
-
-							</div>
-						</div>
-
-						<!--Block-->
-						<div class="activity-block-two">
-							<div class="inner-box">
-								<div class="image-box">
-									<div class="image"><a href="#"><img src="{{ asset('assets/website') }}/images/resource/activity-8.jpg" alt=""
-												title=""></a></div>
-								</div>
-								<div class="lower-content">
-									<div class="price"><span>$120</span></div>
-									<h4><a href="{{route('tours.show', 1)}}">Jal Mahal</a></h4>
-									<div class="ratings clearfix">
-										{{-- <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star empty"></i></div>
-										<div class="rev"><a href="#">05 Review</a></div> --}}
-									</div>
-									<div class="text">Richly varied landscapes, luxurious accommodation.</div>
-									<ul class="bottom-box">
-										<li><span class="icon far fa-clock fa-fw"></span>5 days</li>
-										<li>259P, Himalaya Ag</li>
-									</ul>
-								</div>
-
-							</div>
-						</div>
-
-						<!--Block-->
-						<div class="activity-block-two">
-							<div class="inner-box">
-								<div class="image-box">
-									<div class="image"><a href="#"><img src="{{ asset('assets/website') }}/images/resource/activity-9.jpg" alt=""
-												title=""></a></div>
-								</div>
-								<div class="lower-content">
-									<div class="price"><span>$120</span></div>
-									<h4><a href="{{route('tours.show', 1)}}">Chittorgarh</a></h4>
-									<div class="ratings clearfix">
-										{{-- <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star empty"></i></div>
-										<div class="rev"><a href="#">05 Review</a></div> --}}
-									</div>
-									<div class="text">Richly varied landscapes, luxurious accommodation.</div>
-									<ul class="bottom-box">
-										<li><span class="icon far fa-clock fa-fw"></span>5 days</li>
-										<li>259P, Himalaya Ag</li>
-									</ul>
-								</div>
-
-							</div>
-						</div>
 
 					</div>
 

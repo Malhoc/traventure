@@ -27,13 +27,13 @@ class Blog extends Model
         'user_id'
     ];
 
-    // public function getRouteKeyName()
-    // {
-    //     return 'slug';
-    // }
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
-    // public function category()
-    // {
-    //     return $this->belongsTo(BlogCategory::class, 'blog_category_id', 'id');
-    // }
+    public function category()
+    {
+        return $this->belongsTo(BlogCategory::class, 'blog_category_id', 'id');
+    }
 }

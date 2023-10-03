@@ -115,7 +115,6 @@
                                                     <option selected value="1">Public</option>
                                                     <option value="0">Private</option>
                                                 </select>
-                                                t
                                             </div>
                                         </div>
 

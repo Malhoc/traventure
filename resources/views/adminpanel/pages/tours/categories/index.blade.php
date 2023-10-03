@@ -1,7 +1,7 @@
 @extends('adminpanel.layouts.app')
 
 @section('title-meta')
-    <title>{{ config('app.name') }} | tours List</title>
+    <title>{{config('app.name')}} | Tour Category List</title>
 
     <meta name="description" content="this is description">
 @endsection
@@ -20,10 +20,10 @@
 
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-sm-4">
-                <h2>Tours Management</h2>
+                <h2>Category Management</h2>
                 <ol class="breadcrumb">
                     <li>
-                        <a href="#">Tours</a>
+                        <a href="#">Tour Category</a>
                     </li>
                     <li class="active">
                         <strong>List</strong>
@@ -32,7 +32,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="title-action">
-                    <a href="{{ route('admin.tours.create') }}" class="btn btn-primary">+ Create New</a>
+                    <a href="{{ route('admin.tours.categories.create') }}" class="btn btn-primary">+ Create New</a>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>List of Tours.</h5>
+                            <h5>List of Users.</h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -67,37 +67,23 @@
                                 <table class="table table-striped table-bordered table-hover dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>No.</th>
+                                            <th>No</th>
                                             <th>Name</th>
-                                            <th>Destination</th>
-                                            <th>Duration</th>
-                                            <th>Price</th>
-                                            <th>Group Limit</th>
-                                            {{-- <th>Status</th> --}}
                                             <th>Actions</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($tours as $tour)
-                                            <tr class="gradeX" id="row-{{ $tour->id }}">
+                                        @foreach ($categories as $category)
+                                            <tr class="gradeX" id="row-{{ $category->id }}">
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $tour->title }}</td>
-                                                <td>{{ $tour->destination->name }}</td>
-                                                <td>{{ $tour->duration }}</td>
-                                                <td>{{ $tour->price }}</td>
-                                                <td>{{ $tour->group_limit }}</td>
-                                                {{-- @if ($tour->is_active)
-                                                <td>Public</td>
-                                                @else
-                                                <td>Private</td>
-                                                @endif --}}
-                                                </td>
+                                                <td>{{ $category->name }}</td>
+
                                                 <td class="text-center">
                                                     <div class="btn-group">
-                                                        <a href="{{ route('admin.tours.edit', $tour) }}"
+
+                                                        <a href="{{ route('admin.tours.categories.edit', $category) }}"
                                                             class="btn-white btn btn-xs">Edit</a>
-                                                        <button onclick="deleteRecord({{ $tour->id }})"
+                                                        <button onclick="deleteRecord({{ $category->id }})"
                                                             class="btn-white btn btn-xs">Delete</button>
                                                     </div>
                                                 </td>
@@ -107,12 +93,8 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
+                                            <th>No</th>
                                             <th>Name</th>
-                                            <th>Destination</th>
-                                            <th>Duration</th>
-                                            <th>Price</th>
-                                            <th>Group Limit</th>
-                                            {{-- <th>Status</th> --}}
                                             <th>Actions</th>
                                         </tr>
                                     </tfoot>
@@ -148,22 +130,19 @@
                     // {extend: 'excel', title: 'ExampleFile'},
                     // {extend: 'pdf', title: 'ExampleFile'},
 
-                    {
-                        extend: 'print',
-                        customize: function(win) {
+                    {extend: 'print',
+                     customize: function (win){
                             $(win.document.body).addClass('white-bg');
                             $(win.document.body).css('font-size', '10px');
 
                             $(win.document.body).find('table')
-                                .addClass('compact')
-                                .css('font-size', 'inherit');
-                        }
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                    }
                     }
                 ]
 
             });
-
-
 
         });
 
@@ -182,7 +161,7 @@
                     data: {
                         "_token": "{{ csrf_token() }}"
                     },
-                    url: "{{ route('admin.tours.destroy', '') }}/" + id,
+                    url: "{{ route('admin.tours.categories.destroy', '') }}/" + id,
                     success: function(response) {
                         console.log(response);
                         if (response.success) {

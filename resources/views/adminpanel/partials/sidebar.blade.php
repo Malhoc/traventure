@@ -52,7 +52,7 @@
 
 
 
-            <li class="@if (request()->is('videos/*'))  {{'active'}} @else {{''}} @endif">
+            <li class="@if (request()->is('admin/blog*'))  {{'active'}} @else {{''}} @endif">
                 <a href="{{route('admin.blogs.index')}}">
                     <i class="fa fa-users"></i>
                     <span class="nav-label">Blogs</span>
@@ -65,7 +65,7 @@
             </li>
 
 
-            <li class="@if (request()->is('tours/*'))  {{'active'}} @else {{''}} @endif">
+            <li class="@if (request()->is('admin/tour*'))  {{'active'}} @else {{''}} @endif">
                 <a href="{{route('admin.tours.index')}}">
                     <i class="fa fa-users"></i>
                     <span class="nav-label">Tours</span>
@@ -74,8 +74,12 @@
                 <ul class="nav nav-second-level collapse">
                     <li><a href="{{route('admin.tours.create')}}">Create New</a></li>
                     <li><a href="{{route('admin.tours.index')}}">List </a></li>
+                    <li><a href="{{route('admin.tours.categories.index')}}">Manage Categories</a></li>
+                    <li><a href="{{route('admin.tours.destination.index')}}">Manage Destinations</a></li>
                 </ul>
             </li>
+
+
 
         </ul>
 

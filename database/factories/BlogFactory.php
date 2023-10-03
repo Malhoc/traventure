@@ -23,7 +23,7 @@ class BlogFactory extends Factory
             'summary' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
             'slug' => $this->faker->slug(),
-            'image' =>  $this->faker->image('public/storage/images/blogs', 1920, 509, null, false),
+            'image' =>  $this->faker->image('public/storage/images/blogs', 770, 420, null, false),
             'thumbnail' => $this->faker->image('public/storage/images/blogs', 770, 420, null, false),
             'meta_tag_title' => $this->faker->sentence(),
             'meta_tag_keywords' => $this->faker->sentence(),

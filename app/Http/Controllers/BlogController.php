@@ -12,7 +12,9 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('pages.blogs.index');
+        $blogs = Blog::orderBy('id', 'DESC')->paginate(9);
+        $recentBlogs = Blog::orderBy('id', 'DESC')->paginate(3);
+        return view('pages.blogs.index', compact('blogs', 'recentBlogs'));
     }
 
     /**
@@ -36,7 +38,8 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        return view('pages.blogs.show');
+        $recentBlogs = Blog::orderBy('id', 'DESC')->paginate(3);
+        return view('pages.blogs.show', compact('blog', 'recentBlogs'));
     }
 
     /**
