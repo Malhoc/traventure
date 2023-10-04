@@ -31,7 +31,7 @@
                         <div class="news-detail">
                             <div class="inner-box">
                                 <div class="image-box">
-                                    <div class="image"><img src="{{ asset('storage') }}/images/blogs/{{$blog->image}}" alt="" title=""></div>
+                                    <div class="image"><img src="{{ asset('storage') }}/{{$blog->image}}" alt="" title=""></div>
                                 </div>
                                 <div class="lower-content">
                                     <div class="info">
@@ -359,7 +359,7 @@
 
                             @forelse ($recentBlogs as $blog)
                             <article class="post">
-                                <figure class="post-thumb"><img src="{{ asset('storage') }}/images/blogs/{{$blog->thumbnail}}" alt=""><a
+                                <figure class="post-thumb"><img src="{{ asset('storage') }}/{{$blog->thumbnail}}" alt=""><a
                                         href="{{route('blogs.show', $blog)}}" class="overlay-box"><span
                                             class="icon fa fa-link"></span></a></figure>
                                 <div class="text"><a href="{{route('blogs.show', $blog)}}">{{$blog->title}}</a></div>

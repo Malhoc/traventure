@@ -67,11 +67,13 @@
                                 <h6>About us</h6>
                                 <div class="links">
                                     <ul>
-                                        <li><a href="#">About Us</a></li>
-                                        <li><a href="#">Community Blog</a></li>
-                                        <li><a href="#">Rewards</a></li>
-                                        <li><a href="#">Work with Us</a></li>
-                                        <li><a href="#">Contact</a></li>
+                                        <li><a href="{{route('about-us')}}">About us</a></li>
+                                        <li><a href="{{route('about-us')}}">About us</a></li>
+                                        <li><a href="{{route('about-us')}}">About us</a></li>
+                                        <li><a href="{{route('blogs.index')}}">Blogs</a></li>
+                                        <li><a href="{{route('blogs.index')}}">Blogs</a></li>
+                                        <li><a href="{{route('blogs.index')}}">Blogs</a></li>
+                                        <li><a href="{{route('contact-us.create')}}">Contact</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -80,11 +82,12 @@
                                 <h6>Exlopre Treker</h6>
                                 <div class="links">
                                     <ul>
-                                        <li><a href="#">Account</a></li>
-                                        <li><a href="#">Privacy Policy</a></li>
-                                        <li><a href="#">Affilitate</a></li>
-                                        <li><a href="#">Program</a></li>
-                                        <li><a href="#">Our Partner</a></li>
+                                        <li><a href="{{route('about-us')}}">About us</a></li>
+                                        <li><a href="{{route('about-us')}}">About us</a></li>
+                                        <li><a href="{{route('about-us')}}">About us</a></li>
+                                        <li><a href="{{route('blogs.index')}}">Blogs</a></li>
+                                        <li><a href="{{route('blogs.index')}}">Blogs</a></li>
+                                        <li><a href="{{route('blogs.index')}}">Blogs</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -93,11 +96,12 @@
                                 <h6>Quick lInks</h6>
                                 <div class="links">
                                     <ul>
-                                        <li><a href="#">About us</a></li>
-                                        <li><a href="#">News & press</a></li>
-                                        <li><a href="#">Blog</a></li>
-                                        <li><a href="#">FAQs</a></li>
-                                        <li><a href="#">Careers</a></li>
+                                        <li><a href="{{route('about-us')}}">About us</a></li>
+                                        <li><a href="{{route('about-us')}}">About us</a></li>
+                                        <li><a href="{{route('about-us')}}">About us</a></li>
+                                        <li><a href="{{route('blogs.index')}}">Blogs</a></li>
+                                        <li><a href="{{route('blogs.index')}}">Blogs</a></li>
+                                        <li><a href="{{route('blogs.index')}}">Blogs</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -109,11 +113,11 @@
                         <h6>Other</h6>
                         <div class="links">
                             <ul>
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">News & press</a></li>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">FAQs</a></li>
-                                <li><a href="#">Careers</a></li>
+                                <li><a href="{{route('about-us')}}">About us</a></li>
+                                <li><a href="{{route('about-us')}}">About us</a></li>
+                                <li><a href="{{route('blogs.index')}}">Blog</a></li>
+                                <li><a href="{{route('blogs.index')}}">Blog</a></li>
+                                <li><a href="{{route('blogs.index')}}">Blog</a></li>
                             </ul>
                         </div>
                     </div>
@@ -128,13 +132,13 @@
             <div class="inner clearfix">
                 <div class="social-links">
                     <ul class="clearfix">
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="{{route('about-us')}}"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="{{route('about-us')}}"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="{{route('about-us')}}"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="{{route('about-us')}}"><i class="fab fa-instagram"></i></a></li>
                     </ul>
                 </div>
-                <div class="copyright">Copyright &copy; 2022 Treker. All Rights Reserved. Designed by ThemeIM</div>
+                <div class="copyright">Copyright &copy; 2023 {{config('app.name')}}. All Rights Reserved.</div>
             </div>
         </div>
     </div>

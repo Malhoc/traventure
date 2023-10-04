@@ -49,13 +49,13 @@ class TourController extends Controller
          $inputs['slug'] = Str::slug($request->title);
         if ($request->hasFile('thumbnail')) {
             $thumbnailFile = $request->file('thumbnail');
-            $thumbnailPath = $thumbnailFile->store('tours','public');
+            $thumbnailPath = $thumbnailFile->store('images/tours','public');
             $inputs['thumbnail'] = $thumbnailPath;
         }
 
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
-            $imagePath = $imageFile->store('tours','public');
+            $imagePath = $imageFile->store('images/tours','public');
             $inputs['image'] = $imagePath;
         }
 

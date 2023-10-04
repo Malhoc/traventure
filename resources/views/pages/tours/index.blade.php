@@ -54,7 +54,7 @@
                             <div class="inner-box">
                                 <div class="image-box">
                                     <div class="image"><a href="{{ route('tours.show', $tour) }}"><img
-                                                src="{{ asset('storage') }}/images/tours/{{$tour->thumbnail}}"
+                                                src="{{ asset('storage') }}/{{$tour->thumbnail}}"
                                                 alt="" title=""></a></div>
                                     <div class="price"><span>${{$tour->price}}</span></div>
                                     <div class="info">

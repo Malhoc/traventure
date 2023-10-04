@@ -14,7 +14,7 @@
 		</section> --}}
 
 		<!-- Banner Section -->
-		<section class="packages-banner style-two" style="background-image: url({{ asset('storage') }}/images/tours/{{$tour->image}});">
+		<section class="packages-banner style-two" style="background-image: url({{ asset('storage') }}/{{$tour->image}});">
 		</section>
 		<!--End Banner Section -->
 
@@ -103,23 +103,25 @@
 						{!! $tour->description !!}
 						<div class="feature-box">
 							<h5>Features</h5>
+                            @php
+                                $options = explode(",", $tour->features)
+                            @endphp
 							<ul class="feature-list">
-								<li>Free Download Instagram Logo</li>
-								<li>Illustrator from Instagram Logo 9 Vectors svg vector collection</li>
-								<li>Vectors SVG vector illustration graphic art design format.</li>
-								<li>Following vectors are from the same pack as this vector also</li>
-								<li>Instagram Logo SVG Vector is a part of Social Websites</li>
+                                @foreach ($options as $option)
+								<li>{{$option}}</li>
+                                @endforeach
 							</ul>
 
 						</div>
                         <div class="feature-box">
 							<h5>Facilities</h5>
+                            @php
+                                $options = explode(",", $tour->facilities)
+                            @endphp
 							<ul class="feature-list">
-								<li>Free Download Instagram Logo</li>
-								<li>Illustrator from Instagram Logo 9 Vectors svg vector collection</li>
-								<li>Vectors SVG vector illustration graphic art design format.</li>
-								<li>Following vectors are from the same pack as this vector also</li>
-								<li>Instagram Logo SVG Vector is a part of Social Websites</li>
+                                @foreach ($options as $option)
+								<li>{{$option}}</li>
+                                @endforeach
 							</ul>
 						</div>
 						{{-- <div class="facility-box">
@@ -944,7 +946,7 @@
 						<div class="activity-block-two">
 							<div class="inner-box">
 								<div class="image-box">
-									<div class="image"><a href="#"><img src="{{ asset('storage') }}/images/tours/{{$tour->thumbnail}}" alt=""
+									<div class="image"><a href="#"><img src="{{ asset('storage') }}/{{$tour->thumbnail}}" alt=""
 												title=""></a></div>
 								</div>
 								<div class="lower-content">

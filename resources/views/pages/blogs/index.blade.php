@@ -33,7 +33,7 @@
                             <div class="inner-box">
                                 <div class="image-box">
                                     <div class="image"><a href="{{route('blogs.show', $blog)}}"><img
-                                                src="{{ asset('storage') }}/images/blogs/{{$blog->thumbnail}}" alt="" title=""></a></div>
+                                                src="{{ asset('storage') }}/{{$blog->thumbnail}}" alt="" title=""></a></div>
                                     <div class="overlay-box">
                                         <div class="category">{{isset($tour->category) ? $tour->category->name : ''}}</div>
                                         <h4><a href="{{route('blogs.show', $blog)}}">{{$blog->title}}</a>
@@ -132,7 +132,7 @@
                             </div>
                             @forelse ($recentBlogs as $blog)
                             <article class="post">
-                                <figure class="post-thumb"><img src="{{ asset('storage') }}/images/blogs/{{$blog->thumbnail}}" alt=""><a
+                                <figure class="post-thumb"><img src="{{ asset('storage') }}/{{$blog->thumbnail}}" alt=""><a
                                         href="{{route('blogs.show', $blog)}}" class="overlay-box"><span
                                             class="icon fa fa-link"></span></a></figure>
                                 <div class="text"><a href="{{route('blogs.show', $blog)}}">{{$blog->title}}</a></div>

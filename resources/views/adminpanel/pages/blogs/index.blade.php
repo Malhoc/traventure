@@ -67,6 +67,7 @@
                                 <table class="table table-striped table-bordered table-hover dataTables-example">
                                     <thead>
                                         <tr>
+                                            <th>No</th>
                                             <th>Name</th>
                                             <th>Author</th>
                                             {{-- <th>Summary</th> --}}
@@ -80,7 +81,8 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($blogs as $blog)
-                                            <tr>
+                                        <tr class="gradeX" id="row-{{ $blog->id }}">
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $blog->title }}</td>
                                                 <td>{{ $blog->author_name }}</td>
                                                 {{-- <td>{{ $blog->summary }}</td> --}}
@@ -106,6 +108,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
+                                            <th>No</th>
                                             <th>Name</th>
                                             <th>Author</th>
                                             {{-- <th>Summary</th> --}}
@@ -164,6 +167,43 @@
             });
 
         });
+
+        function deleteRecord(id) {
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this record !",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function() {
+                $.ajax({
+                    method: 'DELETE',
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    url: "{{ route('admin.blogs.destroy', '') }}/" + id,
+                    success: function(response) {
+                        console.log(response);
+                        if (response.success) {
+                            swal("Deleted!", "Your record has been deleted.", "success");
+                            $("#row-" + id).remove();
+                        } else if (response.error) {
+                            swal("Error !", response.error, "error");
+                        } else {
+                            log.
+                            swal("Error !", "Not Authorize | Logical Error", "error");
+                        }
+                    },
+                    error: function(response) {
+                        swal("Error!", "Cannot delete !", "error");
+                    }
+                });
+
+            });
+
+        }
 
 
     </script>

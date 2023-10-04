@@ -16,7 +16,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::orderBy('id', 'DESC')->get();
         return view('adminpanel.pages.blogs.index',compact('blogs'));
     }
 
@@ -138,8 +138,14 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Blog $blog)
     {
-        //
+        $blog = Blog::findOrFail($blog->id);
+        if ($blog) {
+            $blog->delete();
+            return response()->json(['success' => 'Deleted Successfully !']);
+        }
+
+        return response()->json(['error' => 'Error while deleting !']);
     }
 }

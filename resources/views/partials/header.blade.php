@@ -46,11 +46,21 @@
                     <div class="nav-outer clearfix">
                         <nav class="main-menu">
                             <ul class="navigation clearfix">
-                                <li class="current"><a href="{{ route('index') }}">Home</a></li>
-                                <li class=""><a href="{{ route('about-us') }}">About Us</a></li>
-                                <li><a href="{{ route('tours.index') }}">Tours</a></li>
-                                <li class=""><a href="{{ route('blogs.index') }}">Blogs</a></li>
-                                <li><a href="{{ route('contact-us.create') }}">Contact</a></li>
+                                <li class="@if (request()->is('/')) {{ 'current' }} @else {{ '' }} @endif">
+                                    <a href="{{ route('index') }}">Home</a>
+                                </li>
+                                <li class="@if (request()->is('about-us*')) {{ 'current' }} @else {{ '' }} @endif">
+                                    <a href="{{ route('about-us') }}">About Us</a>
+                                </li>
+                                <li class="@if (request()->is('tours*')) {{ 'current' }} @else {{ '' }} @endif">
+                                    <a href="{{ route('tours.index') }}">Tours</a>
+                                </li>
+                                <li class="@if (request()->is('blogs*')) {{ 'current' }} @else {{ '' }} @endif">
+                                    <a href="{{ route('blogs.index') }}">Blogs</a>
+                                </li>
+                                <li class="@if (request()->is('contact-us*')) {{ 'current' }} @else {{ '' }} @endif">
+                                    <a href="{{ route('contact-us.create') }}">Contact</a>
+                                </li>
                             </ul>
                         </nav>
                         <!-- Main Menu End-->
