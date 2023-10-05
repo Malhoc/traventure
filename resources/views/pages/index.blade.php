@@ -125,7 +125,7 @@
                         <div class="trek-block-one">
                             <div class="inner-box">
                                 <div class="image-box">
-                                    <div class="image"><a href="packages.html"><img
+                                    <div class="image"><a href="{{ route('tours.show', $tour) }}"><img
                                                 src="{{ asset('storage') }}/{{ $tour->thumbnail }}" alt=""
                                                 title=""></a></div>
                                     <div class="price"><span>${{ $tour->price }}</span></div>
@@ -152,7 +152,7 @@
                                                 <i class="icon"><img
                                                         src="{{ asset('assets/website') }}/images/icons/logo-icon.svg"
                                                         alt=""></i></span></a></div>
-                                    {{-- <div class="video-link"><a href="packages.html" class="theme-btn"><i
+                                    {{-- <div class="video-link"><a href="{{ route('tours.show', $tour) }}" class="theme-btn"><i
                                             class="icon far fa-video-camera"></i></a></div> --}}
                                 </div>
                             </div>
@@ -925,7 +925,7 @@
                                 <div class="image"><a href="{{route('blogs.show', $blog)}}"><img
                                             src="{{ asset('storage') }}/{{$blog->thumbnail}}" alt=""
                                             title=""></a></div>
-                                <div class="cat"><span>{{isset($tour->category) ? $tour->category->name : ''}}</span></div>
+                                <div class="cat"><span>{{isset($blog->category) ? $blog->category->name : ''}}</span></div>
                             </div>
                             <div class="lower-content">
                                 <div class="info">

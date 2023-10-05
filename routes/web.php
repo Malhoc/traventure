@@ -26,6 +26,9 @@ Route::controller(App\Http\Controllers\ContactUsController::class)->prefix('cont
 Route::controller(App\Http\Controllers\TourController::class)->prefix('tours')->name('tours.')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/{tour}', 'show')->name('show');
+    Route::post('/booking', 'booking')->name('booking');
+    Route::post('/booking/payment', 'bookingPayment')->name('booking.payment');
+    Route::get('/booking/confirmed', 'bookingConfirmed')->name('booking.confirmed');
 });
 
 //blog
@@ -104,9 +107,20 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/store', [App\Http\Controllers\Admin\TourController::class, 'store'])->name('store');
             Route::get('/{tour}', [App\Http\Controllers\Admin\TourController::class, 'show'])->name('show');
             Route::get('/{tour}/edit', [App\Http\Controllers\Admin\TourController::class, 'edit'])->name('edit');
-            Route::put('/{id}', [App\Http\Controllers\Admin\TourController::class, 'update'])->name('update');
+            Route::put('/{destination}', [App\Http\Controllers\Admin\TourController::class, 'update'])->name('update');
             Route::delete('/{tour:id}', [App\Http\Controllers\Admin\TourController::class, 'destroy'])->name('destroy');
 
+        });
+
+        // Bookings
+        Route::prefix('bookings')->name('bookings.')->group(function () {
+            Route::get('/', [App\Http\Controllers\Admin\BookingController::class, 'index'])->name('index');
+            Route::get('/create', [App\Http\Controllers\Admin\BookingController::class, 'create'])->name('create');
+            Route::post('/store', [App\Http\Controllers\Admin\BookingController::class, 'store'])->name('store');
+            Route::get('/{booking}', [App\Http\Controllers\Admin\BookingController::class, 'show'])->name('show');
+            Route::get('/{booking}/edit', [App\Http\Controllers\Admin\BookingController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [App\Http\Controllers\Admin\BookingController::class, 'update'])->name('update');
+            Route::delete('/{booking:id}', [App\Http\Controllers\Admin\BookingController::class, 'destroy'])->name('destroy');
         });
 
     });

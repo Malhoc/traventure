@@ -63,7 +63,7 @@
 								<div class="package-info-block">
 									<div class="inner-box">
 										<div class="icon"><img src="{{ asset('assets/website') }}/images/icons/team-group.svg" alt="" /></div>
-										<strong>Group Size</strong>
+										<strong>Group Size/Limit</strong>
 										{{$tour->group_limit}} Person
 									</div>
 								</div>
@@ -815,16 +815,18 @@
 							<!-- Booking Widget -->
 							<div class="sidebar-widget booking-widget"
 								style="background-image: url({{ asset('assets/website') }}/images/background/booking-bg.jpg);">
-								<h5>Book this Treks</h5>
+								<h5>Book this Tour</h5>
 
 								<!-- Booking Form -->
 								<div class="booking-form">
 
 									<!-- Contact Form -->
-									<form method="post" action="sendemail.php" id="contact-form">
-
+									<form method="post" action="{{route('tours.booking')}}" id="contact-form">
+                                        @csrf
+                                        <input type="hidden" name="tour_id" value="{{$tour->id}}">
+                                        <input type="hidden" name="tour_title" value="{{$tour->title}}">
 										<div class="form-group">
-											<input type="text" name="username" placeholder="Full Name" required>
+											<input type="text" name="name" placeholder="Full Name" required>
 											<span class="icon fal fa-user fa-fw"></span>
 										</div>
 
@@ -839,18 +841,18 @@
 										</div>
 
 										<div class="form-group">
-											<input type="text" class="datepicker" name="time"
+											<input type="text" class="datepicker" name="date"
 												placeholder="DD - MM - YYYY" required>
 											<span class="icon fal fa-calendar fa-fw"></span>
 										</div>
 
 										<div class="form-group">
-											<input type="text" name="time" placeholder="Guest" required>
+											<input type="text" name="time" placeholder="Guest" value="Guest" required>
 											<div class="item-quantity">
 												<div class="quantity-spinner">
 													<button type="button" class="minus"><span
 															class="fa fa-minus"></span></button>
-													<input type="text" name="product" value="2" class="prod_qty"
+													<input type="text" name="no_of_guests" value="1" class="prod_qty"
 														readonly />
 													<button type="button" class="plus"><span
 															class="fa fa-plus"></span></button>
@@ -859,7 +861,7 @@
 										</div>
 
 										<div class="form-group">
-											<button class="theme-btn send-btn"><span class="txt">Send Now <i
+											<button class="theme-btn send-btn"><span class="txt">Next<i
 														class="fa fa-angle-right"></i></span></button>
 										</div>
 

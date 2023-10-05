@@ -54,7 +54,7 @@
 
             <li class="@if (request()->is('admin/blog*'))  {{'active'}} @else {{''}} @endif">
                 <a href="{{route('admin.blogs.index')}}">
-                    <i class="fa fa-users"></i>
+                    <i class="fa fa-file-text-o"></i>
                     <span class="nav-label">Blogs</span>
                     <span class="fa arrow"></span>
                 </a>
@@ -67,7 +67,7 @@
 
             <li class="@if (request()->is('admin/tour*'))  {{'active'}} @else {{''}} @endif">
                 <a href="{{route('admin.tours.index')}}">
-                    <i class="fa fa-users"></i>
+                    <i class="fa fa-road"></i>
                     <span class="nav-label">Tours</span>
                     <span class="fa arrow"></span>
                 </a>
@@ -79,7 +79,16 @@
                 </ul>
             </li>
 
-
+            <li class="@if (request()->is('admin/booking*'))  {{'active'}} @else {{''}} @endif">
+                <a href="{{route('admin.bookings.index')}}">
+                    <i class="fa fa-calendar"></i>
+                    <span class="nav-label">Bookings</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="{{route('admin.bookings.index')}}">List </a></li>
+                </ul>
+            </li>
 
         </ul>
 
