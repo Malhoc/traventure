@@ -1,7 +1,7 @@
 @extends('adminpanel.layouts.app')
 
 @section('title-meta')
-    <title>{{ config('app.name') }} | blogs Create</title>
+    <title>{{ config('app.name') }} | Tour Edit</title>
 
     <meta name="description" content="this is description">
 @endsection
@@ -18,10 +18,10 @@
 
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-sm-4">
-                <h2>Blog Management</h2>
+                <h2>Tour Management</h2>
                 <ol class="breadcrumb">
                     <li>
-                        <a href="index.html">Blog</a>
+                        <a href="{{route('admin.tours.index')}}">Tour</a>
                     </li>
                     <li class="active">
                         <strong>Edit</strong>
@@ -30,7 +30,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="title-action">
-                    <a href="{{ route('admin.blogs.index') }}" class="btn btn-primary">Show List</a>
+                    <a href="{{ route('admin.tours.index') }}" class="btn btn-primary">Show List</a>
                 </div>
             </div>
         </div>
@@ -50,13 +50,13 @@
                             <div id="tab-1" class="tab-pane active">
                                 <div class="panel-body">
 
-                                    <form id="blogForm" class="form-horizontal" method="POST"
-                                        action="{{ route('admin.blogs.update', $blog) }}" enctype="multipart/form-data">
+                                    <form id="tourForm" class="form-horizontal" method="POST"
+                                        action="{{ route('admin.tours.update', $tour) }}" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
                                         <div class="form-group @error('title') has-error @enderror"><label
                                                 class="col-sm-2 control-label">Title:</label>
-                                            <div class="col-sm-10"><input id="" value="{{ $blog->title }}"
+                                            <div class="col-sm-10"><input id="" value="{{ $tour->title }}"
                                                     name="title" required type="text" placeholder="Unique"
                                                     class="form-control">
                                                 @error('title')
@@ -65,38 +65,139 @@
                                             </div>
 
                                         </div>
-                                        <div class="form-group @error('author_name') has-error @enderror"><label
-                                                class="col-sm-2 control-label">Author:</label>
-                                            <div class="col-sm-10"><input id="author_name" value="{{ $blog->author_name }}"
-                                                    name="author_name" required type="text" placeholder="Unique"
-                                                    class="form-control">
-                                                @error('author_name')
+                                        <div class="form-group ">
+                                            <label class="col-sm-2 control-label">Price:</label>
+                                            <div class="col-sm-4"><input id="price" value="{{ $tour->price }}"
+                                                    name="price" required type="number" class="form-control">
+                                                @error('price')
+                                                    <span class="help-block m-b-none">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                            <label class="col-sm-2 control-label">Group Limit:</label>
+                                            <div class="col-sm-4"><input id="group_limit" value="{{ $tour->group_limit }}"
+                                                    name="group_limit" required type="number" class="form-control">
+                                                @error('group_limit')
                                                     <span class="help-block m-b-none">{{ $message }}</span>
                                                 @enderror
                                             </div>
 
                                         </div>
-                                        {{-- <div class="form-group"><label class="col-sm-2 control-label">Author:</label>
-                                                <div class="col-sm-10"><input id="" value="{{$blog->author_name}}" name="author_name" placeholder="Hamza Saqib" type="text" class="form-control" ></div>
+
+                                        <div class="form-group @error('duration') has-error @enderror">
+                                            <label class="col-sm-2 control-label">Duration:</label>
+                                            <div class="col-sm-4"><input id="duration" value="{{ $tour->duration }}"
+                                                    name="duration" required type="text" class="form-control"
+                                                    placeholder="e.g. 3 Days, 1 Month, 2 Weeks">
+                                                @error('duration')
+                                                    <span class="help-block m-b-none">{{ $message }}</span>
+                                                @enderror
                                             </div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">Category:</label>
-                                                <div class="col-sm-10">
-                                                    <select class="form-control" value="{{old('blog_category_id')}}" name="blog_category_id" required>
-                                                        <option value="" selected disabled>Select</option>
-                                                        @foreach ($blogCategories as $blogCategorie)
-                                                            @if ($blog->blog_category_id == $blogCategorie->id)
-                                                            <option selected value="{{$blogCategorie->id}}">{{$blogCategorie->name}}</option>
-                                                            @else
-                                                            <option value="{{$blogCategorie->id}}">{{$blogCategorie->name}}</option>
-                                                            @endif
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div> --}}
+
+
+                                            <label class="col-sm-2 control-label">Per Person Booking:</label>
+                                            <div class="col-sm-4"><input id="per_person_booking_limit" value="{{ $tour->per_person_booking_limit }}"
+                                                    name="per_person_booking_limit" required type="number" class="form-control"
+                                                    placeholder="5">
+                                                @error('per_person_booking_limit')
+                                                    <span class="help-block m-b-none">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="form-group @error('facilities') has-error @enderror"><label
+                                                class="col-sm-2 control-label">Facilities:</label>
+                                            <div class="col-sm-10"><input id="facilities" value="{{ $tour->facilities }}"
+                                                    name="facilities" required type="text"
+                                                    placeholder="comma seprated values, e.g Dinner,Extra Clothes, 3 time Food"
+                                                    class="form-control">
+                                                @error('facilities')
+                                                    <span class="help-block m-b-none">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group @error('features') has-error @enderror"><label
+                                                class="col-sm-2 control-label">Features:</label>
+                                            <div class="col-sm-10"><input id="features" value="{{ $tour->features }}"
+                                                    name="features" required type="text"
+                                                    placeholder="comma seprated values, e.g Dinner,Extra Clothes, 3 time Food"
+                                                    class="form-control">
+                                                @error('features')
+                                                    <span class="help-block m-b-none">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group @error('includes') has-error @enderror"><label
+                                                class="col-sm-2 control-label">Includes:</label>
+                                            <div class="col-sm-10"><input id="includes" value="{{ $tour->includes }}"
+                                                    name="includes" required type="text"
+                                                    placeholder="comma seprated values, e.g Dinner,Extra Clothes, 3 time Food"
+                                                    class="form-control">
+                                                @error('includes')
+                                                    <span class="help-block m-b-none">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group @error('excludes') has-error @enderror"><label
+                                                class="col-sm-2 control-label">Excludes:</label>
+                                            <div class="col-sm-10"><input id="excludes" value="{{ $tour->excludes }}"
+                                                    name="excludes" required type="text"
+                                                    placeholder="comma seprated values, e.g Dinner,Extra Clothes, 3 time Food"
+                                                    class="form-control">
+                                                @error('excludes')
+                                                    <span class="help-block m-b-none">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Destination / Location</label>
+
+                                            <div class="col-sm-10 @error('destination_id') has-error @enderror ">
+                                                <select id="destination_id" name="destination_id"
+                                                    class="form-control m-b" required>
+                                                    @foreach ($destinations as $destination)
+                                                    @if ($tour->destination_id == $destination->id)
+                                                    <option selected value="{{ $destination->id }}">{{ $destination->name }}
+                                                    </option>
+                                                    @else
+                                                    <option value="{{ $destination->id }}">{{ $destination->name }}
+                                                    </option>
+                                                    @endif
+
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Category</label>
+
+                                            <div class="col-sm-10 @error('tour_category_id') has-error @enderror ">
+                                                <select id="tour_category_id" name="tour_category_id"
+                                                    class="form-control m-b" required>
+                                                    @foreach ($categories as $category)
+                                                    @if ($tour->tour_category_id == $category->id)
+                                                    <option selected value="{{ $category->id }}">{{ $category->name }}
+                                                    </option>
+                                                    @else
+                                                    <option value="{{ $category->id }}">{{ $category->name }}
+                                                    </option>
+                                                    @endif
+
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
 
                                         <div class="form-group @error('summary') has-error @enderror"><label
                                                 class="col-sm-2 control-label">Summary:</label>
-                                            <div class="col-sm-10"><input id="" value="{{ $blog->summary }}"
+                                            <div class="col-sm-10"><input id="" value="{{ $tour->summary }}"
                                                     name="summary" required type="text" placeholder="short summary .."
                                                     class="form-control">
                                                 @error('summary')
@@ -109,19 +210,19 @@
                                         <div class="form-group"><label class="col-sm-2 control-label">Description:</label>
                                             <div class="col-sm-10">
                                                 <textarea id="" name="description" type="text" required class="summernote">
-                                                        {{ $blog->description }}
+                                                        {{ $tour->description }}
                                                     </textarea>
                                             </div>
                                         </div>
 
-                                        <div class="hr-line-dashed"></div>
+                                        {{-- <div class="hr-line-dashed"></div>
 
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Visible</label>
 
                                             <div class="col-sm-10 @error('is_active') has-error @enderror ">
                                                 <select id="" name="is_active" class="form-control m-b" required>
-                                                    @if ($blog->is_active)
+                                                    @if ($tour->is_active)
                                                         <option selected value="1">Public</option>
                                                         <option value="0">Private</option>
                                                     @else
@@ -134,14 +235,14 @@
                                                     <span class="help-block m-b-none">Select Visiblelity</span>
                                                 @enderror
                                             </div>
-                                        </div>
+                                        </div> --}}
 
 
                                         <div class="hr-line-dashed"></div>
 
                                         <div class="form-group">
                                             <div class="col-sm-4 col-sm-offset-2">
-                                                <button class="btn btn-primary" type="submit">Update Blog</button>
+                                                <button class="btn btn-primary" type="submit">Update tour</button>
                                             </div>
                                         </div>
 
@@ -151,30 +252,37 @@
                                 <div class="panel-body">
 
 
-                                    <fieldset form="blogForm" class="form-horizontal">
+                                    <fieldset form="tourForm" class="form-horizontal">
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">jpeg, jpg, png</label>
 
                                         </div>
                                         <div class="form-group"><label class="col-sm-2 control-label">Thumbnail Image
-                                                (350x236):</label>
+                                            (310x291):</label>
                                             <div class="col-sm-10"><input name="thumbnail" accept=".png, .jpg, jpeg."
                                                     type="file" class="form-control" placeholder="jpeg, jpg, png ...">
                                             </div>
                                         </div>
                                         <div class="form-group"><label class="col-sm-2 control-label">Full Image
-                                                (750x440):</label>
+                                            (1920x580):</label>
                                             <div class="col-sm-10"><input name="image" accept=".png, .jpg, jpeg."
                                                     type="file" class="form-control" placeholder="jpeg, jpg, png ...">
                                             </div>
                                         </div>
 
+                                        <div class="form-group"><label class="col-sm-2 control-label">Gallery
+                                            (770x370):</label>
+                                        <div class="col-sm-10"><input name="gallery" accept=".png, .jpg, jpeg."
+                                                type="file" multiple class="form-control"
+                                                placeholder="jpeg, jpg, png ...">
+                                        </div>
+                                    </div>
                                     </fieldset>
                                     <div class="hr-line-dashed"></div>
 
                                     <div class="form-group">
                                         <div class="col-sm-4 col-sm-offset-2">
-                                            <button class="btn btn-primary" type="submit">Update Blog</button>
+                                            <button class="btn btn-primary" type="submit">Update tour</button>
                                         </div>
                                     </div>
 
@@ -183,22 +291,22 @@
                             <div id="tab-3" class="tab-pane">
                                 <div class="panel-body">
 
-                                    <fieldset form="blogForm" class="form-horizontal">
+                                    <fieldset form="tourForm" class="form-horizontal">
                                         <div class="form-group"><label class="col-sm-2 control-label">Meta Tag
                                                 Title:</label>
-                                            <div class="col-sm-10"><input value="{{ $blog->meta_tag_title }}"
+                                            <div class="col-sm-10"><input value="{{ $tour->meta_tag_title }}"
                                                     name="meta_tag_title" type="text" class="form-control"
                                                     placeholder="..."></div>
                                         </div>
                                         <div class="form-group"><label class="col-sm-2 control-label">Meta Tag
                                                 Keywords:</label>
-                                            <div class="col-sm-10"><input value="{{ $blog->meta_tag_keywords }}"
+                                            <div class="col-sm-10"><input value="{{ $tour->meta_tag_keywords }}"
                                                     name="meta_tag_keywords" type="text" class="form-control"
                                                     placeholder="Lorem, Ipsum, has, been"></div>
                                         </div>
                                         <div class="form-group"><label class="col-sm-2 control-label">Meta Tag
                                                 Description:</label>
-                                            <div class="col-sm-10"><input value="{{ $blog->meta_tag_description }}"
+                                            <div class="col-sm-10"><input value="{{ $tour->meta_tag_description }}"
                                                     name="meta_tag_description" type="text" class="form-control"
                                                     placeholder="Sheets containing Lorem"></div>
                                         </div>
@@ -207,7 +315,7 @@
 
                                     <div class="form-group">
                                         <div class="col-sm-4 col-sm-offset-2">
-                                            <button class="btn btn-primary" type="submit">Update Blog</button>
+                                            <button class="btn btn-primary" type="submit">Update tour</button>
                                         </div>
                                     </div>
                                     </form>

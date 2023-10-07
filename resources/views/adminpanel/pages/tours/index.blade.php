@@ -95,6 +95,8 @@
                                                 </td>
                                                 <td class="text-center">
                                                     <div class="btn-group">
+                                                        <a href="{{ route('tours.show', $tour) }}" target="_blank"
+                                                            class="btn-white btn btn-xs">View</a>
                                                         <a href="{{ route('admin.tours.edit', $tour) }}"
                                                             class="btn-white btn btn-xs">Edit</a>
                                                         <button onclick="deleteRecord({{ $tour->id }})"

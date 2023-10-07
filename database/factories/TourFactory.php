@@ -24,6 +24,8 @@ class TourFactory extends Factory
             'duration' => $this->faker->randomElement(['5 Days', '1 Month', '8 Days', '2 Weeks']),
             'facilities' => $this->faker->sentence(),
             'features' => $this->faker->sentence(),
+            'excludes' => $this->faker->sentence(),
+            'includes' => $this->faker->sentence(),
             'price' => $this->faker->numberBetween(12,50),
             'group_limit' => $this->faker->numberBetween(12,50),
             'gallery' => json_encode(['asd','asdasd','asdasd']),

@@ -19,9 +19,12 @@ return new class extends Migration
             $table->longText('summary')->nullable();
             $table->longText('description')->nullable();
             $table->longText('facilities')->nullable();
+            $table->longText('includes')->nullable();
+            $table->longText('excludes')->nullable();
             $table->longText('features')->nullable();
             $table->integer('price')->default(0);
             $table->integer('group_limit')->default(30);
+            $table->integer('per_person_booking_limit')->default(5);
             $table->string('slug')->unique();
             $table->string('image')->nullable();
             $table->string('thumbnail')->nullable();

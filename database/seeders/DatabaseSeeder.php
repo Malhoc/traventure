@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Storage::makeDirectory('public/images/users');
-        Storage::makeDirectory('public/images/blogs');
-        Storage::makeDirectory('public/images/tours');
+        // Storage::makeDirectory('public/images/users');
+        // Storage::makeDirectory('public/images/blogs');
+        // Storage::makeDirectory('public/images/tours');
         User::create([
             'name' => 'Admin',
             'email' => 'admin@gmail.com',

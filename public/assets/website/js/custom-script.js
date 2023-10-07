@@ -1,8 +1,8 @@
 (function($) {
-	
+
 	"use strict";
-	
-	
+
+
 	//Hide Loading Box (Preloader)
 	function handlePreloader() {
 		if($('.preloader').length){
@@ -10,8 +10,8 @@
 			$('.preloader').delay(0).fadeOut(0);
 		}
 	}
-	
-	
+
+
 	//Update Header Style and Scroll to Top
 	function headerStyle() {
 		if($('.main-header').length){
@@ -59,7 +59,7 @@
 	        }
 	    });
 	}
-	
+
 	//Hidden Bar Menu Config
 	function hiddenBarMenuConfig() {
 		var menuWrap = $('.hidden-bar .side-menu');
@@ -85,7 +85,7 @@
 				$(this).find('i').toggleClass('sl-icon-arrow-up');
 				return false;
 			}
-			
+
 		});
 	}
 
@@ -94,7 +94,7 @@
 
 	//Custom Scroll for Hidden Sidebar
 	if ($('.hidden-bar-wrapper').length) {
-		
+
 		$('.hidden-bar-closer,.menu-backdrop').on('click', function () {
 			$('.hidden-bar,body').removeClass('visible-sidebar');
 			$('.side-menu ul li.dropdown ul').slideUp();
@@ -111,8 +111,8 @@
 			$('.hidden-bar,body').addClass('visible-sidebar');
 		});
 	}
-	
-	
+
+
 	// Odometer
 	if ($(".odometer").length) {
 		$('.odometer').appear();
@@ -127,8 +127,8 @@
 			};
 		});
 	}
-	
-	
+
+
 	//Banner Slider
 	if ($('.banner-slider').length) {
 		$('.banner-slider').owlCarousel({
@@ -157,7 +157,7 @@
 					items:1
 				}
 			}
-		});    		
+		});
 	}
 
 	//Popular Carousel
@@ -187,7 +187,7 @@
 					items:3
 				}
 			}
-		});    		
+		});
 	}
 
 	//Testimonials Carousel
@@ -217,7 +217,7 @@
 					items:3
 				}
 			}
-		});    		
+		});
 	}
 
 	//Sponsors Carousel
@@ -247,7 +247,7 @@
 					items:4
 				}
 			}
-		});    		
+		});
 	}
 
 	//Trending Carousel
@@ -277,7 +277,7 @@
 					items:2
 				}
 			}
-		});    		
+		});
 	}
 
 	//Testimonial Carousel Two
@@ -321,7 +321,7 @@
 					items:1
 				}
 			}
-		});    		
+		});
 	}
 
 	//Team Carousel
@@ -351,7 +351,7 @@
 					items:3
 				}
 			}
-		});    		
+		});
 	}
 
 	//Related Products Carousel
@@ -381,7 +381,7 @@
 					items:4
 				}
 			}
-		});    		
+		});
 	}
 
 	//Single Item Carousel
@@ -411,7 +411,7 @@
 					items:1
 				}
 			}
-		});    		
+		});
 	}
 
 	//Single Item Carousel
@@ -441,7 +441,7 @@
 					items:1
 				}
 			}
-		});    		
+		});
 	}
 
 	//Testimonial Carousel Two
@@ -501,18 +501,18 @@
 	enableDefaultMasonry();
 
 	//Jquery Spinner / Quantity Spinner
-	if($('.quantity-spinner').length){
-		 $('.quantity-spinner .plus').on('click', function() {
-			var val = $(this).prev('.prod_qty').val();
-			$(this).prev('.prod_qty').val((val*1)+1);
-		});
-		$('.quantity-spinner .minus').on('click', function(){
-			var val = $(this).next('.prod_qty').val();
-			if (val != 1 ){
-			$(this).next('.prod_qty').val((val*1)-1);
-			}
-		});
-	}
+	// if($('.quantity-spinner').length){
+	// 	 $('.quantity-spinner .plus').on('click', function() {
+	// 		var val = $(this).prev('.prod_qty').val();
+	// 		$(this).prev('.prod_qty').val((val*1)+1);
+	// 	});
+	// 	$('.quantity-spinner .minus').on('click', function(){
+	// 		var val = $(this).next('.prod_qty').val();
+	// 		if (val != 1 ){
+	// 		$(this).next('.prod_qty').val((val*1)-1);
+	// 		}
+	// 	});
+	// }
 
 	//Accordion Box
 	if($('.accordion-box').length){
@@ -542,7 +542,7 @@
 		$('.tabs-box .tab-buttons .tab-btn').on('click', function(e) {
 			e.preventDefault();
 			var target = $($(this).attr('data-tab'));
-			
+
 			if ($(target).is(':visible')){
 				return false;
 			}else{
@@ -571,7 +571,7 @@
 	if($('.custom-select-box').length){
 		$('.custom-select-box').selectmenu().selectmenu('menuWidget').addClass('overflow');
 	}
-	
+
 
 	// Scroll to a Specific Div
 	if($('.scroll-to-target').length){
@@ -581,10 +581,10 @@
 		   $('html, body').animate({
 			   scrollTop: $(target).offset().top
 			 }, 1500);
-	
+
 		});
 	}
-	
+
 	// Elements Animation
 	if($('.wow').length){
 		var wow = new WOW(
@@ -598,20 +598,20 @@
 		);
 		wow.init();
 	}
-	
-	
+
+
 /* ==========================================================================
    When document is Scrollig, do
    ========================================================================== */
-	
+
 	$(window).on('scroll', function() {
 		headerStyle();
 	});
-	
+
 /* ==========================================================================
    When document is loading, do
    ========================================================================== */
-	
+
 	$(window).on('load', function() {
 		handlePreloader();
 		if($('body.page-loaded').length){
@@ -623,11 +623,11 @@
 /* ==========================================================================
    When document is Resized
    ========================================================================== */
-	
+
 	$(window).on('resize', function() {
 		enableDefaultMasonry();
 	});
-	
-	
+
+
 
 })(window.jQuery);

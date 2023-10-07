@@ -124,6 +124,28 @@
                                 @endforeach
 							</ul>
 						</div>
+                        <div class="feature-box">
+							<h5>Includes</h5>
+                            @php
+                                $options = explode(",", $tour->includes)
+                            @endphp
+							<ul class="feature-list">
+                                @foreach ($options as $option)
+								<li>{{$option}}</li>
+                                @endforeach
+							</ul>
+						</div>
+                        <div class="feature-box">
+							<h5>Excludes</h5>
+                            @php
+                                $options = explode(",", $tour->excludes)
+                            @endphp
+							<ul class="feature-list">
+                                @foreach ($options as $option)
+								<li>{{$option}}</li>
+                                @endforeach
+							</ul>
+						</div>
 						{{-- <div class="facility-box">
 							<h5>Facilities</h5>
 							<div class="row clearfix">
@@ -936,7 +958,7 @@
 			<div class="bg-layer" style="background-image: url({{ asset('assets/website') }}/images/background/image-1.jpg);"></div>
 			<div class="auto-container">
 				<div class="title-box centered">
-					<h2><span>Discover More Rajasthan Tours</span></h2>
+					<h2><span>Discover More Tours</span></h2>
 				</div>
 				<div class="content-box">
 
@@ -980,4 +1002,28 @@
 			</div>
 		</section>
 		<!-- End News Section Two -->
+@endsection
+
+
+@section('custom-script')
+
+<script>
+    var perPersonBookingLimit = @json($tour->per_person_booking_limit);
+    console.log(perPersonBookingLimit);
+    //Jquery Spinner / Quantity Spinner
+	if($('.quantity-spinner').length){
+		 $('.quantity-spinner .plus').on('click', function() {
+			var val = $(this).prev('.prod_qty').val();
+            if (val < perPersonBookingLimit ){
+			$(this).prev('.prod_qty').val((val*1)+1);
+            }
+		});
+		$('.quantity-spinner .minus').on('click', function(){
+			var val = $(this).next('.prod_qty').val();
+			if (val != 1 ){
+			$(this).next('.prod_qty').val((val*1)-1);
+			}
+		});
+	}
+</script>
 @endsection

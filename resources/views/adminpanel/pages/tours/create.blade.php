@@ -95,14 +95,22 @@
                                         <div class="form-group @error('duration') has-error @enderror">
                                             <label class="col-sm-2 control-label">Duration:</label>
                                             <div class="col-sm-4"><input id="duration" value="{{ old('duration') }}"
-                                                    name="duration" required type="text" class="form-control" placeholder="e.g. 3 Days, 1 Month, 2 Weeks" >
+                                                    name="duration" required type="text" class="form-control"
+                                                    placeholder="e.g. 3 Days, 1 Month, 2 Weeks">
                                                 @error('duration')
                                                     <span class="help-block m-b-none">{{ $message }}</span>
                                                 @enderror
                                             </div>
 
 
-
+                                            <label class="col-sm-2 control-label">Per Person Booking:</label>
+                                            <div class="col-sm-4"><input id="per_person_booking_limit" value="{{ old('per_person_booking_limit') }}"
+                                                    name="per_person_booking_limit" required type="number" class="form-control"
+                                                    placeholder="5">
+                                                @error('per_person_booking_limit')
+                                                    <span class="help-block m-b-none">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </div>
                                         <div class="form-group @error('facilities') has-error @enderror"><label
                                                 class="col-sm-2 control-label">Facilities:</label>
@@ -130,13 +138,41 @@
 
                                         </div>
 
+                                        <div class="form-group @error('includes') has-error @enderror"><label
+                                                class="col-sm-2 control-label">Includes:</label>
+                                            <div class="col-sm-10"><input id="includes" value="{{ old('includes') }}"
+                                                    name="includes" required type="text"
+                                                    placeholder="comma seprated values, e.g Dinner,Extra Clothes, 3 time Food"
+                                                    class="form-control">
+                                                @error('includes')
+                                                    <span class="help-block m-b-none">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group @error('excludes') has-error @enderror"><label
+                                                class="col-sm-2 control-label">Excludes:</label>
+                                            <div class="col-sm-10"><input id="excludes" value="{{ old('excludes') }}"
+                                                    name="excludes" required type="text"
+                                                    placeholder="comma seprated values, e.g Dinner,Extra Clothes, 3 time Food"
+                                                    class="form-control">
+                                                @error('excludes')
+                                                    <span class="help-block m-b-none">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Destination / Location</label>
 
                                             <div class="col-sm-10 @error('destination_id') has-error @enderror ">
-                                                <select id="destination_id" name="destination_id" class="form-control m-b" required>
+                                                <select id="destination_id" name="destination_id"
+                                                    class="form-control m-b" required>
                                                     @foreach ($destinations as $destination)
-                                                    <option value="{{$destination->id}}">{{$destination->name}}</option>
+                                                        <option value="{{ $destination->id }}">{{ $destination->name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -146,9 +182,11 @@
                                             <label class="col-sm-2 control-label">Category</label>
 
                                             <div class="col-sm-10 @error('tour_category_id') has-error @enderror ">
-                                                <select id="tour_category_id" name="tour_category_id" class="form-control m-b" required>
+                                                <select id="tour_category_id" name="tour_category_id"
+                                                    class="form-control m-b" required>
                                                     @foreach ($categories as $category)
-                                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                                        <option value="{{ $category->id }}">{{ $category->name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -174,7 +212,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="hr-line-dashed"></div>
+                                        {{-- <div class="hr-line-dashed"></div> --}}
 
                                         {{-- <div class="form-group">
                                             <label class="col-sm-2 control-label">Visible</label>
@@ -223,11 +261,12 @@
                                         </div>
 
                                         <div class="form-group"><label class="col-sm-2 control-label">Gallery
-                                            (770x370):</label>
-                                        <div class="col-sm-10"><input name="gallery" accept=".png, .jpg, jpeg."
-                                                type="file" multiple class="form-control" placeholder="jpeg, jpg, png ...">
+                                                (770x370):</label>
+                                            <div class="col-sm-10"><input name="gallery" accept=".png, .jpg, jpeg."
+                                                    type="file" multiple class="form-control"
+                                                    placeholder="jpeg, jpg, png ...">
+                                            </div>
                                         </div>
-                                    </div>
 
                                     </fieldset>
                                     <div class="hr-line-dashed"></div>

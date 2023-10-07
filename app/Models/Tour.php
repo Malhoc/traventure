@@ -31,13 +31,16 @@ class Tour extends Model
         'tour_category_id',
         'destination_id',
         'gallery',
+        'includes',
+        'excludes',
+        'per_person_booking_limit',
     ];
 
     public function getRouteKeyName()
     {
         return 'slug';
     }
-    
+
     public function category()
     {
         return $this->belongsTo(TourCategory::class, 'tour_category_id', 'id');

@@ -80,7 +80,7 @@ class TourController extends Controller
     {
         $destinations = Destination::orderBy('id', 'DESC')->get();
         $categories = TourCategory::orderBy('id', 'DESC')->get();
-        return view('adminpanel.pages.tours.create',compact('categories', 'destinations', ''));
+        return view('adminpanel.pages.tours.edit',compact('categories', 'destinations', 'tour'));
     }
 
     /**

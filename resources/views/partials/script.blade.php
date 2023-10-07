@@ -13,3 +13,4 @@
 <script src="{{ asset('assets/website') }}/js/odometer.js"></script>
 <script src="{{ asset('assets/website') }}/js/custom-script.js"></script>
 
+@yield('custom-script')
