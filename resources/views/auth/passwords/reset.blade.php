@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container">
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -61,5 +61,53 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+
+<!--Sign Up Section-->
+<section class="signup-section">
+    <div class="auto-container">
+        <div class="form-box site-form">
+            <div class="signup-form" style="margin-top: 70px">
+                <h5>Sign Up</h5>
+                <form method="post" action="{{ route('password.update') }}">
+                    @csrf
+                    <div class="row clearfix">
+                        <input type="hidden" name="token" value="{{ $token }}">
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                            <div class="f-label">Email Address <i>*</i></div>
+                            <div class="field-inner">
+                                <input type="email" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                            <div class="f-label">Password <i>*</i></div>
+                            <div class="field-inner">
+                                <input type="password" name="password" required autocomplete="new-password">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                            <div class="f-label">Re-Enter Password <i>*</i></div>
+                            <div class="field-inner">
+                                <input type="password" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                            @error('email')
+                                <span style="color: red">{{ $message }}</span>
+                            @enderror
+                            @error('password')
+                                <span style="color: red">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                            <button type="submit" class="theme-btn btn-style-two"><span>{{ __('Reset Password') }}<i
+                                        class="icon far fa-angle-right"></i></span></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            {{-- <div class="lower-link">Already have an account? <a href="{{ route('login') }}">Login In</a></div> --}}
+        </div>
+    </div>
+</section>
 @endsection
