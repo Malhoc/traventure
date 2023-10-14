@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('payment_status')->nullable();
             $table->foreignId('tour_id')->nullable();
             $table->foreign('tour_id')->references('id')->on('tours')->onDelete('set null');
+            $table->foreignId('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
         });
     }

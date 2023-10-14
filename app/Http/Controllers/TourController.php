@@ -7,6 +7,7 @@ use App\Models\PaymentTransaction;
 use App\Models\Tour;
 use App\Models\TourCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Console\Input\Input;
 
 class TourController extends Controller
@@ -46,6 +47,11 @@ class TourController extends Controller
     {
         $booking = $request->session()->get('booking');
 
+        try {
+            $userId = Auth::id();
+        } catch (\Throwable $th) {
+            $userId = null;
+        }
         $booking = Booking::create([
             'name' => $booking->name,
             'email' => $booking->email,
@@ -54,6 +60,7 @@ class TourController extends Controller
             'no_of_guests' => $booking->no_of_guests,
             'tour_id' => $booking->tour->id,
             'price' => $booking->no_of_guests * $booking->tour->price,
+            'user_id' => $userId
         ]);
 
         // perform transactiion here

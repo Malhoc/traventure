@@ -8,10 +8,10 @@
             <div class="image-layer" style="background-image: url({{ asset('assets/website') }}/images/background/banner-image-1.jpg);"></div>
             <div class="auto-container">
                 <div class="content-box">
-                    <h2>Check Out</h2>
+                    <h2>Event Booking</h2>
                     <div class="bread-crumb">
                         <ul class="clearfix">
-                            <li><span class="icon-home fa fa-home"></span><a href="index.html">Home</a></li>
+                            <li><span class="icon-home fa fa-home"></span><a href="{{route('index')}}">Home</a></li>
                             <li class="current">Booking Payment</li>
                         </ul>
                     </div>
