@@ -21,9 +21,17 @@
                         </ul>
                     </div> --}}
                     @guest()
-                    <div class="login"><i class="icon fa fa-user"></i> <a href="{{ route('login') }}">SIGN IN</a></div>
+                        <div class="login"><i class="icon fa fa-user"></i> <a href="{{ route('login') }}">SIGN IN</a></div>
                     @else
-                    <div class="login"><i class="icon fa fa-user"></i> <a href="{{ route('login') }}">{{ Auth::user()->name }}</a></div>
+                        <div class="login"><i class="icon fa fa-user"></i> <a
+                                href="{{ route('login') }}">{{ Auth::user()->name }}</a></div>
+                        <div class="login"><i class="icon fa fa-sign-out"></i> <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">Logout</a>
+                        </div>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     @endguest
                 </div>
             </div>
@@ -36,7 +44,7 @@
             <div class="main-box clearfix">
                 <!--Logo-->
                 <div class="logo-box">
-                    <div class="logo"><a href="{{route('index')}}" title="Treker"><img
+                    <div class="logo"><a href="{{ route('index') }}" title="Treker"><img
                                 src="{{ asset('assets/website') }}/images/logo.svg" alt="" title="Treker"></a>
                     </div>
                 </div>
@@ -46,19 +54,24 @@
                     <div class="nav-outer clearfix">
                         <nav class="main-menu">
                             <ul class="navigation clearfix">
-                                <li class="@if (request()->is('/')) {{ 'current' }} @else {{ '' }} @endif">
+                                <li
+                                    class="@if (request()->is('/')) {{ 'current' }} @else {{ '' }} @endif">
                                     <a href="{{ route('index') }}">Home</a>
                                 </li>
-                                <li class="@if (request()->is('about-us*')) {{ 'current' }} @else {{ '' }} @endif">
+                                <li
+                                    class="@if (request()->is('about-us*')) {{ 'current' }} @else {{ '' }} @endif">
                                     <a href="{{ route('about-us') }}">About Us</a>
                                 </li>
-                                <li class="@if (request()->is('tours*')) {{ 'current' }} @else {{ '' }} @endif">
+                                <li
+                                    class="@if (request()->is('tours*')) {{ 'current' }} @else {{ '' }} @endif">
                                     <a href="{{ route('tours.index') }}">Tours</a>
                                 </li>
-                                <li class="@if (request()->is('blogs*')) {{ 'current' }} @else {{ '' }} @endif">
+                                <li
+                                    class="@if (request()->is('blogs*')) {{ 'current' }} @else {{ '' }} @endif">
                                     <a href="{{ route('blogs.index') }}">Blogs</a>
                                 </li>
-                                <li class="@if (request()->is('contact-us*')) {{ 'current' }} @else {{ '' }} @endif">
+                                <li
+                                    class="@if (request()->is('contact-us*')) {{ 'current' }} @else {{ '' }} @endif">
                                     <a href="{{ route('contact-us.create') }}">Contact</a>
                                 </li>
                             </ul>
@@ -95,7 +108,7 @@
                             <div class="form-box">
                                 <div class="s-close-btn"><span class="icon far fa-times"></span></div>
                                 <span class="s-icon fa fa-search"></span>
-                                <form method="post" action="{{route('index')}}">
+                                <form method="post" action="{{ route('index') }}">
                                     <div class="form-group">
                                         <input type="search" name="search" value="" placeholder="Search Here"
                                             required="">
@@ -127,7 +140,7 @@
                     <path d="M15 0L1 14m14 0L1 0" stroke="currentColor" fill="none" fill-rule="evenodd"></path>
                 </svg></span></div>
         <div class="nav-logo-box">
-            <div class="logo"><a href="{{route('index')}}" title="Treker"><img
+            <div class="logo"><a href="{{ route('index') }}" title="Treker"><img
                         src="{{ asset('assets/website') }}/images/logo.svg" alt="" title="Treker"></a></div>
         </div>
         <!-- .Side-menu -->

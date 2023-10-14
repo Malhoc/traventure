@@ -1,47 +1,46 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
+<!--Reset Password Section-->
+<section class="reset-section">
+    <div class="auto-container">
+        <div class="form-box site-form">
+            <div class="reset-form " style="margin-top: 70px">
+                <form method="post" action="{{ route('password.email') }}">
+                    @csrf
+                    <div class="row clearfix">
+                        @if (session('status'))
+                        <div class="invalid-alert"><i class="fa fa-times-circle"></i>
                             {{ session('status') }}
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                            <div class="text">Lost your password? Please enter your username or email address.
+                                You will receive a link to create a new password via email.</div>
+                        </div>
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                            <div class="f-label">Email Address <i>*</i></div>
+                            <div class="field-inner">
+                                <input type="email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            </div>
+                            @error('email')
+                                    <span style="color: red">{{ $message }}</span>
                                 @enderror
-                            </div>
                         </div>
+                        
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                            <div class="text-right"><button type="submit"
+                                    class="theme-btn btn-style-two"><span>Reset Password<i
+                                            class="icon far fa-angle-right"></i></span></button></div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
+
+            <div class="lower-link">Don't have a account? <a href="signup.html">Sign Up</a> Now</div>
         </div>
     </div>
-</div>
+</section>
 @endsection
