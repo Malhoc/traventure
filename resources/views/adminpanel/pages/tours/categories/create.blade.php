@@ -1,7 +1,7 @@
 @extends('adminpanel.layouts.app')
 
 @section('title-meta')
-    <title>{{ config('app.name') }} | Class Create</title>
+    <title>{{ config('app.name') }} | Tour Category Create</title>
 
     <meta name="description" content="this is description">
 @endsection
@@ -18,7 +18,7 @@
 
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-sm-4">
-                <h2>Touur Category Management</h2>
+                <h2>Tour Category Management</h2>
                 <ol class="breadcrumb">
                     <li>
                         <a href="{{ route('admin.tours.categories.index') }}">Tour Category</a>

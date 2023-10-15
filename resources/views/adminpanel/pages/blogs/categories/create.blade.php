@@ -1,7 +1,7 @@
 @extends('adminpanel.layouts.app')
 
 @section('title-meta')
-    <title>{{ config('app.name') }} | Tour Category Edit</title>
+    <title>{{ config('app.name') }} | BLog Category Create</title>
 
     <meta name="description" content="this is description">
 @endsection
@@ -18,19 +18,19 @@
 
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-sm-4">
-                <h2>Tour Category Management</h2>
+                <h2>BLog Category Management</h2>
                 <ol class="breadcrumb">
                     <li>
-                        <a href="{{ route('admin.tours.categories.index') }}">Category</a>
+                        <a href="{{ route('admin.blogs.categories.index') }}">BLog Category</a>
                     </li>
                     <li class="active">
-                        <strong>Edit</strong>
+                        <strong>Create</strong>
                     </li>
                 </ol>
             </div>
             <div class="col-sm-8">
                 <div class="title-action">
-                    <a href="{{ route('admin.tours.categories.index') }}" class="btn btn-primary">Show List</a>
+                    <a href="{{ route('admin.blogs.categories.index') }}" class="btn btn-primary">Show List</a>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
                     <div class="ibox float-e-margins">
 
                         <div class="ibox-title">
-                            <h5>Fill out this form to update Class.</h5>
+                            <h5>Fill out this form to create a new Category.</h5>
                             {{-- <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -63,16 +63,16 @@
                         </div>
 
                         <div class="ibox-content">
-                            <form method="POST" class="form-horizontal" action="{{ route('admin.tours.categories.update', $category) }}"
+                            <form method="POST" class="form-horizontal" action="{{ route('admin.blogs.categories.store') }}"
                                 enctype="multipart/form-data">
                                 @csrf
-                                @method('PUT')
+
                                 <div class="form-group ">
                                     <label class="col-sm-2 control-label">Name</label>
 
                                     <div class="col-sm-4 @error('name') has-error @enderror">
                                         <input type="text" class="form-control" name="name"
-                                            value="{{ $category->name }}" required>
+                                            value="{{ old('name') }}" required>
                                         @error('name')
                                             <span class="invalid-feedback text-danger" role="alert">
                                                 <strong>{{ $message }}</strong>

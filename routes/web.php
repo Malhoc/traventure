@@ -71,6 +71,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Blogs
         Route::prefix('blogs')->name('blogs.')->group(function () {
+            // Categories
+            Route::prefix('categories')->name('categories.')->group(function () {
+                Route::get('/', [App\Http\Controllers\Admin\BlogCategoryController::class, 'index'])->name('index');
+                Route::get('/create', [App\Http\Controllers\Admin\BlogCategoryController::class, 'create'])->name('create');
+                Route::post('/store', [App\Http\Controllers\Admin\BlogCategoryController::class, 'store'])->name('store');
+                Route::get('/{category}', [App\Http\Controllers\Admin\BlogCategoryController::class, 'show'])->name('show');
+                Route::get('/{category}/edit', [App\Http\Controllers\Admin\BlogCategoryController::class, 'edit'])->name('edit');
+                Route::put('/{category}', [App\Http\Controllers\Admin\BlogCategoryController::class, 'update'])->name('update');
+                Route::delete('/{category:id}', [App\Http\Controllers\Admin\BlogCategoryController::class, 'destroy'])->name('destroy');
+            });
             Route::get('/', [App\Http\Controllers\Admin\BlogController::class, 'index'])->name('index');
             Route::get('/create', [App\Http\Controllers\Admin\BlogController::class, 'create'])->name('create');
             Route::post('/store', [App\Http\Controllers\Admin\BlogController::class, 'store'])->name('store');
@@ -89,7 +99,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::post('/store', [App\Http\Controllers\Admin\TourCategoryController::class, 'store'])->name('store');
                 Route::get('/{category}', [App\Http\Controllers\Admin\TourCategoryController::class, 'show'])->name('show');
                 Route::get('/{category}/edit', [App\Http\Controllers\Admin\TourCategoryController::class, 'edit'])->name('edit');
-                Route::put('/{id}', [App\Http\Controllers\Admin\TourCategoryController::class, 'update'])->name('update');
+                Route::put('/{category}', [App\Http\Controllers\Admin\TourCategoryController::class, 'update'])->name('update');
                 Route::delete('/{category:id}', [App\Http\Controllers\Admin\TourCategoryController::class, 'destroy'])->name('destroy');
             });
 

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\TourCategory;
+use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 
-class TourCategoryController extends Controller
+class BlogCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class TourCategoryController extends Controller
      */
     public function index()
     {
-        $categories = TourCategory::orderBy('id', 'DESC')->get();
-        return view('adminpanel.pages.tours.categories.index', compact('categories'));
+        $categories = BlogCategory::orderBy('id', 'DESC')->get();
+        return view('adminpanel.pages.blogs.categories.index', compact('categories'));
     }
 
     /**
@@ -27,7 +27,7 @@ class TourCategoryController extends Controller
      */
     public function create()
     {
-        return view('adminpanel.pages.tours.categories.create');
+        return view('adminpanel.pages.blogs.categories.create');
     }
 
     /**
@@ -42,7 +42,7 @@ class TourCategoryController extends Controller
             'name' => 'required|string|max:20',
         ]);
 
-        TourCategory::create([
+        BlogCategory::create([
             'name' => $request->input('name'),
             'slug' => Str::slug($request->input('name'))
         ]);
@@ -53,10 +53,10 @@ class TourCategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TourCategory  $category
+     * @param  \App\Models\blogCategory  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(TourCategory $category)
+    public function show(BlogCategory $category)
     {
         return view('adminpanel.pages.classes.show', compact('class'));
     }
@@ -67,9 +67,9 @@ class TourCategoryController extends Controller
      * @param  \App\Models\Clas  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(TourCategory $category)
+    public function edit(BlogCategory $category)
     {
-        return view('adminpanel.pages.tours.categories.edit', compact('category'));
+        return view('adminpanel.pages.blogs.categories.edit', compact('category'));
     }
 
     /**
@@ -79,28 +79,28 @@ class TourCategoryController extends Controller
      * @param  \App\Models\Clas  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TourCategory $category)
+    public function update(Request $request, BlogCategory $category)
     {
         $request->validate([
             'name' => 'required|string|max:20',
         ]);
-        $category = TourCategory::find($category->id);
+        $category = BlogCategory::find($category->id);
         $category->name = $request->input('name');
         $category->slug = Str::slug($request->input('name'));
         $category->save();
 
-        return redirect()->route('admin.tours.categories.edit', $category)->with(['success'=>'Class Successfully Saved.']);
+        return redirect()->route('admin.blogs.categories.edit', $category)->with(['success'=>'Class Successfully Saved.']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TourCategory  $category
+     * @param  \App\Models\blogCategory  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TourCategory $category)
+    public function destroy(BlogCategory $category)
     {
-        $category = TourCategory::findOrFail($category->id);
+        $category = BlogCategory::findOrFail($category->id);
         if ($category) {
             $category->delete();
             return response()->json(['success' => 'Deleted Successfully !']);

@@ -1,7 +1,7 @@
 @extends('adminpanel.layouts.app')
 
 @section('title-meta')
-    <title>{{config('app.name')}} | Videos List</title>
+    <title>{{config('app.name')}} | BLog Category List</title>
 
     <meta name="description" content="this is description">
 @endsection
@@ -20,10 +20,10 @@
 
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-sm-4">
-                <h2>Videos Management</h2>
+                <h2>BLog Category Management</h2>
                 <ol class="breadcrumb">
                     <li>
-                        <a href="#">Videos</a>
+                        <a href="#">BLog Category</a>
                     </li>
                     <li class="active">
                         <strong>List</strong>
@@ -32,7 +32,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="title-action">
-                    <a href="{{route('admin.videos.create')}}" class="btn btn-primary">+ Create New</a>
+                    <a href="{{ route('admin.blogs.categories.create') }}" class="btn btn-primary">+ Create New</a>
                 </div>
             </div>
         </div>
@@ -42,8 +42,8 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>List of Videos.</h5>
-                            <div class="ibox-tools">
+                            <h5>List of Categories.</h5>
+                            {{-- <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
                                 </a>
@@ -59,7 +59,7 @@
                                 <a class="close-link">
                                     <i class="fa fa-times"></i>
                                 </a>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="ibox-content">
 
@@ -67,33 +67,24 @@
                                 <table class="table table-striped table-bordered table-hover dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>Title.</th>
-                                            <th>Description</th>
-                                            <th>Author</th>
-                                            <th>Book</th>
-                                            <th>Narrated By</th>
+                                            <th>No</th>
+                                            <th>Name</th>
                                             <th>Actions</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($videos as $video)
-                                            <tr>
-                                                <td>{{ $video->title }}</td>
-                                                <td>{{ $video->description }}</td>
-                                                <td>{{ $video->author_name }}</td>
-                                                <td>{{ $video->book }}</td>
-                                                <td>{{ $video->narrated_by}}</td>
-                                                </td>
+                                        @foreach ($categories as $category)
+                                            <tr class="gradeX" id="row-{{ $category->id }}">
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $category->name }}</td>
+
                                                 <td class="text-center">
                                                     <div class="btn-group">
 
-                                                        <a href="{{ route('admin.videos.edit', $video->id ) }}"
+                                                        <a href="{{ route('admin.blogs.categories.edit', $category) }}"
                                                             class="btn-white btn btn-xs">Edit</a>
-                                                        <a href='{{route('admin.videos.destroy', $video->id)}}'
-                                                            class='btn-white btn btn-xs'>Delete</a>
-                                                        {{-- <button onclick="deleteRecord({{ route('admin.videos.destroy', $video->id )}})"
-                                                            class="btn-white btn btn-xs">Delete</button> --}}
+                                                        <button onclick="deleteRecord({{ $category->id }})"
+                                                            class="btn-white btn btn-xs">Delete</button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -102,11 +93,8 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>Title.</th>
-                                            <th>Description</th>
-                                            <th>Author</th>
-                                            <th>Book</th>
-                                            <th>Narrated By</th>
+                                            <th>No</th>
+                                            <th>Name</th>
                                             <th>Actions</th>
                                         </tr>
                                     </tfoot>
@@ -137,10 +125,10 @@
             $('.dataTables-example').DataTable({
                 dom: '<"html5buttons"B>lTfgitp',
                 buttons: [
-                    {extend: 'copy'},
-                    {extend: 'csv'},
-                    {extend: 'excel', title: 'ExampleFile'},
-                    {extend: 'pdf', title: 'ExampleFile'},
+                    // {extend: 'copy'},
+                    // {extend: 'csv'},
+                    // {extend: 'excel', title: 'ExampleFile'},
+                    // {extend: 'pdf', title: 'ExampleFile'},
 
                     {extend: 'print',
                      customize: function (win){
@@ -158,7 +146,42 @@
 
         });
 
+        function deleteRecord(id) {
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this record !",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function() {
+                $.ajax({
+                    method: 'DELETE',
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    url: "{{ route('admin.blogs.categories.destroy', '') }}/" + id,
+                    success: function(response) {
+                        console.log(response);
+                        if (response.success) {
+                            swal("Deleted!", "Your record has been deleted.", "success");
+                            $("#row-" + id).remove();
+                        } else if (response.error) {
+                            swal("Error !", response.error, "error");
+                        } else {
+                            log.
+                            swal("Error !", "Not Authorize | Logical Error", "error");
+                        }
+                    },
+                    error: function(response) {
+                        swal("Error!", "Cannot delete !", "error");
+                    }
+                });
 
+            });
+
+        }
     </script>
 
     <script>

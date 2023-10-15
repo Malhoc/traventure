@@ -61,6 +61,7 @@
                 <ul class="nav nav-second-level collapse">
                     <li><a href="{{route('admin.blogs.create')}}">Create New</a></li>
                     <li><a href="{{route('admin.blogs.index')}}">List </a></li>
+                    <li><a href="{{route('admin.blogs.categories.index')}}">Manage Categories</a></li>
                 </ul>
             </li>
 
