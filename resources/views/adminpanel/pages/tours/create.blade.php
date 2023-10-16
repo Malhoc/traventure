@@ -303,7 +303,7 @@
 
                                     <div class="form-group">
                                         <div class="col-sm-4 col-sm-offset-2">
-                                            <button class="btn btn-primary" type="submit">Save Blog</button>
+                                            <button class="btn btn-primary" type="submit">Save Tour</button>
                                         </div>
                                     </div>
                                     </form>

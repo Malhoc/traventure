@@ -242,7 +242,7 @@
 
                                         <div class="form-group">
                                             <div class="col-sm-4 col-sm-offset-2">
-                                                <button class="btn btn-primary" type="submit">Update tour</button>
+                                                <button class="btn btn-primary" type="submit">Update Tour</button>
                                             </div>
                                         </div>
 

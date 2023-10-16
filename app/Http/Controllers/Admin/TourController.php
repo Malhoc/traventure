@@ -36,7 +36,7 @@ class TourController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required|string|unique:blogs,title',
+            'title' => 'required|string|unique:tours,title',
             'summary' => 'string|nullable',
             'description' => 'string|nullable',
             'author_name' => 'string|nullable',
@@ -45,8 +45,8 @@ class TourController extends Controller
             'tour_category_id' => 'integer|nullable',
         ]);
 
-         $inputs = $request->all();
-         $inputs['slug'] = Str::slug($request->title);
+        $inputs = $request->all();
+        $inputs['slug'] = Str::slug($request->title);
         if ($request->hasFile('thumbnail')) {
             $thumbnailFile = $request->file('thumbnail');
             $thumbnailPath = $thumbnailFile->store('images/tours','public');
@@ -88,7 +88,47 @@ class TourController extends Controller
      */
     public function update(Request $request, Tour $tour)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|string|unique:tours,title,'. $tour->id,
+            'summary' => 'string|nullable',
+            'description' => 'string|nullable',
+            'author_name' => 'string|nullable',
+            'image' => 'file|nullable',
+            'blog_category_id' => 'integer|nullable',
+        ]);
+        $tour = Tour::find($tour->id);
+        $tour->title = $request->title;
+        $tour->slug = Str::slug($request->title);
+        $tour->includes = $request->includes;
+        $tour->excludes = $request->excludes;
+        $tour->per_person_booking_limit = $request->per_person_booking_limit;
+        $tour->destination_id = $request->destination_id;
+        $tour->tour_category_id = $request->tour_category_id;
+        $tour->is_active = $request->is_active;
+        $tour->group_limit = $request->group_limit;
+        $tour->price = $request->price;
+        $tour->features = $request->features;
+        $tour->facilities = $request->facilities;
+        $tour->duration = $request->duration;
+        $tour->summary = $request->summary;
+        $tour->description = $request->description;
+        $tour->author_name = $request->author_name;
+        if ($request->hasFile('thumbnail')) {
+            $thumbnailFile = $request->file('thumbnail');
+            $thumbnailPath = $thumbnailFile->store('images/tours','public');
+            $inputs['thumbnail'] = $thumbnailPath;
+        }
+        if ($request->hasFile('image')) {
+            $imageFile = $request->file('image');
+            $imagePath = $imageFile->store('images/tours','public');
+            $inputs['image'] = $imagePath;
+        }
+        $tour->meta_tag_title = $request->meta_tag_title;
+        $tour->meta_tag_keywords = $request->meta_tag_keywords;
+        $tour->meta_tag_description = $request->meta_tag_description;
+        $tour->save();
+        return redirect()->route('admin.tours.index');
+
     }
 
     /**
